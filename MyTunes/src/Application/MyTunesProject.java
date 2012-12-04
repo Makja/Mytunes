@@ -2,15 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mytunes;
+package Application;
 
 /**
  *
- * @author Mak, Jonas, Stefan og Daniel.
+ * @author Mak
  */
-public class MyTunes
+public class MyTunesProject
 {
-
     /**
      * @param args the command line arguments
      */
