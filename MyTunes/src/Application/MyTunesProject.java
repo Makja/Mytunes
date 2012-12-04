@@ -4,17 +4,20 @@
  */
 package Application;
 
+import UI.MainMenu;
+
 /**
  *
- * @author Mak
+ * @author bhp
  */
 public class MyTunesProject
 {
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args)
     {
-        
+        new MainMenu().run();
     }
 }
