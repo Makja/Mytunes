@@ -15,7 +15,6 @@ public class MyTunesProject
      */
     public static void main(String[] args)
     {
-        System.out.println("Nu duer det....");
         
     }
 }
