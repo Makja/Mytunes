@@ -6,7 +6,7 @@ package UI;
 
 /**
  *
- * @author bhp
+ * @author Stefan, Mak, Jonas og Daniel
  */
 public class SubMenuCon extends Menu
 {
