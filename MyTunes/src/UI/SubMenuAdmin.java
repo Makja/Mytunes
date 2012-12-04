@@ -14,7 +14,9 @@ public class SubMenuAdmin extends Menu
     
     public SubMenuAdmin()
     {
-        super("Administration Menu", "List all", "Search");
+        super("Administration Menu", 
+                "Song", 
+                "Playlist");
         EXIT_OPTION = EXIT_VALUE;
     }
 
@@ -35,13 +37,14 @@ public class SubMenuAdmin extends Menu
 
     private void doActionSuboption1()
     {
-        System.out.println("List all");
+        System.out.println("Song");
+        
         pause();
     }
 
     private void doActionSuboption2()
     {
-        System.out.println("Search");
+        System.out.println("Playlist");
         pause();
     }
 
