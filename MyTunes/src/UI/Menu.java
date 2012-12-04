@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package menuproject;
+package UI;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
