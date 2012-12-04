@@ -16,7 +16,7 @@ public class MyTunes
      */
     public static void main(String[] args)
     {
-        System.out.println("Nu duer det");
+        System.out.println("Nu duer det.");
         
     }
 }
