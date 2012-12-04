@@ -100,4 +100,3 @@ public abstract class Menu
     abstract protected void doAction(int option);
 }
 
-}
