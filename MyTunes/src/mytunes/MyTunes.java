@@ -6,7 +6,7 @@ package mytunes;
 
 /**
  *
- * @author Mak
+ * @author Mak..
  */
 public class MyTunes
 {
