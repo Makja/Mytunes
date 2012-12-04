@@ -6,7 +6,7 @@ package mytunes;
 
 /**
  *
- * @author Mak, Jonas, Stefan og Daniel
+ * @author Mak, Jonas, Stefan og Daniel.
  */
 public class MyTunes
 {
