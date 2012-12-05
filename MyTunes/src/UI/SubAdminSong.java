@@ -70,8 +70,7 @@ public class SubAdminSong extends Menu
 
     private void doActionSuboption1()
     {
-        System.out.println("Song");
-
+        System.out.println("List of all songs");
         pause();
     }
 
@@ -122,8 +121,7 @@ public class SubAdminSong extends Menu
 
     private void doActionExit()
     {
-        System.out.println("You selected to exit.");
-        System.out.println("Bye Bye...");
+        System.out.println("returning to Administration Menu");        
         pause();
     }
 }
