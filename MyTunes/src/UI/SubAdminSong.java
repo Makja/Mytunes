@@ -69,7 +69,21 @@ public class SubAdminSong extends Menu
 
     private void listAllSongs()
     {
-        System.out.println("List of all songs");
+         try
+        {   
+            ArrayList<Song> songs = mgr.ListAll();
+
+
+           
+            for (Song s : songs)
+            {
+                System.out.println(s);
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(" ERROR - " + e.getMessage());
+        }
         pause();
     }
 

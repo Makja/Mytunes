@@ -28,4 +28,9 @@ public class MyTunesManager
     {
         return db.Search();
     }
+    
+    public ArrayList<Song> ListAll() throws SQLException
+    {
+        return db.ListAll();
+    }
 }
