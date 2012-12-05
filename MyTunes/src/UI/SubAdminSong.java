@@ -4,6 +4,11 @@
  */
 package UI;
 
+import BE.Song;
+import BLL.MyTunesManager;
+import DAL.MyTunesDBManager;
+import java.util.ArrayList;
+
 /**
  *
  * @author Stefan, Mak, Jonas og Daniel
@@ -12,6 +17,7 @@ public class SubAdminSong extends Menu
 {
 
     private static final int EXIT_VALUE = 0;
+    private MyTunesManager mgr;
 
     public SubAdminSong()
     {
@@ -23,6 +29,15 @@ public class SubAdminSong extends Menu
                 "Remove a Song",
                 "Check");
         EXIT_OPTION = EXIT_VALUE;
+        try
+        {
+            mgr = new MyTunesManager();
+        }
+        catch (Exception ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+            System.exit(2);
+        }
     }
 
     @Override
@@ -34,7 +49,7 @@ public class SubAdminSong extends Menu
                 doActionSuboption1();
                 break;
             case 2:
-                doActionSuboption2();
+                Search();
                 break;
             case 3:
                 doActionSuboption3();
@@ -59,9 +74,24 @@ public class SubAdminSong extends Menu
         pause();
     }
 
-    private void doActionSuboption2()
+    private void Search()
     {
-        System.out.println("Searching for a song");
+
+        try
+        {   
+            ArrayList<Song> songs = mgr.Search();
+
+
+           
+            for (Song s : songs)
+            {
+                System.out.println(s);
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(" ERROR - " + e.getMessage());
+        }
         pause();
     }
 
