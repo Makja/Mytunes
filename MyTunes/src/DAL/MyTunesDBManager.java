@@ -41,14 +41,14 @@ public class MyTunesDBManager
 
     public ArrayList<Song> ListAll() throws SQLException
     {
-        try(Connection con = dataSource.getConnection())
+        try (Connection con = dataSource.getConnection())
         {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM artist JOIN Song ON artist.id = Song.artistID JOIN Category ON Category.id = Song.categoryID");
-            
+
             ArrayList<Song> songs = new ArrayList<>();
-            
-            while(rs.next())
+
+            while (rs.next())
             {
                 int id = rs.getInt("Id");
                 String title = rs.getString("Title");
@@ -56,7 +56,7 @@ public class MyTunesDBManager
                 String category = rs.getString("Category");
                 String fileName = rs.getString("Filename");
                 int duration = rs.getInt("Duration");
-                
+
                 Song s = new Song(id, title, artist, category, fileName, duration);
                 songs.add(s);
             }
@@ -99,6 +99,33 @@ public class MyTunesDBManager
             }
             return songs;
         }
+    
+    }
+    public Song AddSong(Song s) throws SQLException
+    {
+        String sql = "INSERT INTO Song AND Artist VALUES (?, ?, ?, ?,?)";
+        
+        Connection con = dataSource.getConnection();
 
+        PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+        ps.setString(1, s.getTitle());
+        ps.setString(2, s.getArtist());
+        ps.setString(3, s.getCategory());
+        ps.setString(4, s.getFileName());
+        ps.setInt(5, s.getDuration());
+        
+
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to insert Song");
+        }
+
+        ResultSet keys = ps.getGeneratedKeys();
+        keys.next();
+        int id = keys.getInt(1);
+
+        return new Song(id, s);
     }
 }
+

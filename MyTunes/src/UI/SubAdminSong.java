@@ -7,6 +7,8 @@ package UI;
 import BE.Song;
 import BLL.MyTunesManager;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 /**
  *
@@ -69,12 +71,13 @@ public class SubAdminSong extends Menu
 
     private void listAllSongs()
     {
-         try
-        {   
+        try
+        {
             ArrayList<Song> songs = mgr.ListAll();
 
+            clear();
+            printSongHeader();
 
-           
             for (Song s : songs)
             {
                 System.out.println(s);
@@ -91,11 +94,11 @@ public class SubAdminSong extends Menu
     {
         clear();
         try
-        {   
+        {
             ArrayList<Song> songs = mgr.Search();
 
-           clear();
-           printSongHeader();
+            clear();
+            printSongHeader();
             for (Song s : songs)
             {
                 System.out.println(s);
@@ -110,7 +113,44 @@ public class SubAdminSong extends Menu
 
     private void addSong()
     {
-        System.out.println("You are adding a song");
+        clear();
+        System.out.println("Add Song:");
+        System.out.println();
+
+        try
+        {
+            Scanner sc = new Scanner(System.in, "ISO-8859-1");
+
+            System.out.print("Title: ");
+            String title = sc.nextLine();
+
+            System.out.print("Artist: ");
+            String artist = sc.nextLine();
+
+            System.out.print("Category: ");
+            String category = sc.nextLine();
+            
+            System.out.print("Filename: ");
+            String fileName = sc.nextLine();
+            
+            System.out.print("Duration");
+            int duration = sc.nextInt();
+
+            Song s = new Song(title, artist, category, fileName, duration);
+
+            s = new MyTunesManager().AddSong(s);
+
+            System.out.println();
+            System.out.println("Song added with id = " + s.getId());
+        }
+        catch (InputMismatchException e)
+        {
+            System.out.println("ERROR - department id must be a number");
+        }
+        catch (Exception e)
+        {
+            System.out.println("ERROR - " + e.getMessage());
+        }
         pause();
     }
 
@@ -134,6 +174,6 @@ public class SubAdminSong extends Menu
 
     private void doActionExit()
     {
-        System.out.println("returning to Administration Menu");        
+        System.out.println("returning to Administration Menu");
     }
 }

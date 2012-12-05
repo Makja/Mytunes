@@ -10,37 +10,48 @@ package BE;
  */
 public class Song
 {
+
     private final int id;
     private String title;
     private String artist;
     private String category;
     private String fileName;
     private int duration;
-    
+
     /**
-     * 
+     *
      * @param id
      * @param title
      * @param artist
      * @param category
      * @param fileName
-     * @param duration 
-     */
+     * @param duration
+     */ 
+    public Song(String title, String artist, String category, String fileName, int duration)
+    {
+        this(-1, title, artist, category, fileName, duration);
+    }
+    
     public Song(int id, String title, String artist, String category, String fileName, int duration)
-    {   this.id = id;
+    {
+        this.id = id;
         this.title = title;
         this.artist = artist;
         this.category = category;
         this.fileName = fileName;
         this.duration = duration;
-}
-    /**
-     * 
-     * @param id
-     * @param title 
-     */
-    
+    }
+   
+    public Song(int id, Song s)
+    {
+        this(id, s.getTitle(), s.getArtist(), s.getCategory(), s.getFileName(), s.getDuration());
+    }
 
+    /**
+     *
+     * @param id
+     * @param title
+     */
     /**
      * @return the id
      */
@@ -128,7 +139,7 @@ public class Song
     {
         this.duration = duration;
     }
-    
+
     @Override
     public String toString()
     {

@@ -33,4 +33,9 @@ public class MyTunesManager
     {
         return db.ListAll();
     }
+    
+    public Song AddSong(Song s) throws SQLException
+    {
+        return db.AddSong(s);
+    }
 }
