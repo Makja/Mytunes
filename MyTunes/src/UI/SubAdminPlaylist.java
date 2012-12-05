@@ -15,7 +15,7 @@ public class SubAdminPlaylist extends Menu
 
     public SubAdminPlaylist()
     {
-        super("Playlist Menu",
+        super("Playlist Menu",          //Menuens title
                 "List all Playlist",
                 "Show all songs in a playlist",
                 "Add a Playlist",
@@ -32,68 +32,68 @@ public class SubAdminPlaylist extends Menu
         switch (option)
         {
             case 1:
-                doActionSuboption1();
+                listAllPlaylists();
                 break;
             case 2:
-                doActionSuboption2();
+                listSongsInAPlaylist();
                 break;
             case 3:
-                doActionSuboption3();
+                AddAPlaylist();
                 break;
             case 4:
-                doActionSuboption4();
+                removePlaylist();
                 break;
             case 5:
-                doActionSuboption5();
+                reOrderPlaylist();
                 break;
             case 6:
-                doActionSuboption6();
+                addSongToPlaylist();
                 break;
             case 7:
-                doActionSuboption7();
+                removeSongFromPlaylist();
             case EXIT_VALUE:
                 doActionExit();
         }
     }
 
-    private void doActionSuboption1()
+    private void listAllPlaylists()
     {
         System.out.println("Printing all playlists");
 
         pause();
     }
 
-    private void doActionSuboption2()
+    private void listSongsInAPlaylist()
     {
         System.out.println("Showing all songs in a playlist");
         pause();
     }
 
-    private void doActionSuboption3()
+    private void AddAPlaylist()
     {
         System.out.println("Adding a playlist");
         pause();
     }
 
-    private void doActionSuboption4()
+    private void removePlaylist()
     {
         System.out.println("Removing a playlist");
         pause();
     }
 
-    private void doActionSuboption5()
+    private void reOrderPlaylist()
     {
         System.out.println("You are trying to re-order a playlist");
         pause();
     }
 
-    private void doActionSuboption6()
+    private void addSongToPlaylist()
     {
         System.out.println("You are trying to add a song to a playlist");
         pause();
     }
 
-    private void doActionSuboption7()
+    private void removeSongFromPlaylist()
     {
         System.out.println("You are trying to remove a song from a playlist.");
         pause();
