@@ -15,7 +15,7 @@ public class SubMenuCon extends Menu
 
     public SubMenuCon()
     {
-        super("Submenu Control", "Play", "Play control");
+        super("Submenu Control", "Play song", "Play playlist", "Stop", "Pause", "Resume", "Whats playing");
         EXIT_OPTION = EXIT_VALUE;
     }
 
