@@ -11,11 +11,13 @@ package UI;
 public class MainMenu extends Menu
 {
 
+    private static final int EXIT_VALUE = 0;
+    
     public MainMenu()
     {
         super("MyTunes", "Administration",
-                "Control",
-                "....");
+                "Control");
+                EXIT_OPTION = EXIT_VALUE;
     }
 
     @Override
@@ -28,9 +30,6 @@ public class MainMenu extends Menu
                 break;
             case 2:
                 doActionOption2();
-                break;
-            case 3:
-                doActionOption3();
                 break;
         }
     }
@@ -46,8 +45,4 @@ public class MainMenu extends Menu
         new SubMenuCon().run();
     }
 
-    private void doActionOption3()
-    {
-        new SubMenuCon().run();
-    }
 }

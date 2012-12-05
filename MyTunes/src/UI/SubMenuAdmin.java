@@ -40,12 +40,14 @@ public class SubMenuAdmin extends Menu
         System.out.println("Song");
         
         pause();
+        clear();
     }
 
     private void doActionSuboption2()
     {
         System.out.println("Playlist");
         pause();
+        clear();
     }
 
     private void doActionExit()
