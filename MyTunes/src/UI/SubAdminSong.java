@@ -46,7 +46,7 @@ public class SubAdminSong extends Menu
         switch (option)
         {
             case 1:
-                doActionSuboption1();
+                ListAll();
                 break;
             case 2:
                 Search();
@@ -68,9 +68,23 @@ public class SubAdminSong extends Menu
         }
     }
 
-    private void doActionSuboption1()
+    private void ListAll()
     {
-        System.out.println("List of all songs");
+         try
+        {   
+            ArrayList<Song> songs = mgr.ListAll();
+
+
+           
+            for (Song s : songs)
+            {
+                System.out.println(s);
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(" ERROR - " + e.getMessage());
+        }
         pause();
     }
 

@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Scanner;
@@ -38,10 +39,34 @@ public class MyTunesDBManager
         dataSource.setPassword(props.getProperty("PASSWORD"));
     }
 
+    public ArrayList<Song> ListAll() throws SQLException
+    {
+        try(Connection con = dataSource.getConnection())
+        {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM artist JOIN Song ON artist.id = Song.artistID JOIN Category ON Category.id = Song.categoryID");
+            
+            ArrayList<Song> songs = new ArrayList<>();
+            
+            while(rs.next())
+            {
+                int id = rs.getInt("Id");
+                String title = rs.getString("Title");
+                String artist = rs.getString("Name");
+                String category = rs.getString("Category");
+                String fileName = rs.getString("Filename");
+                int duration = rs.getInt("Duration");
+                
+                Song s = new Song(id, title, artist, category, fileName, duration);
+                songs.add(s);
+            }
+            return songs;
+        }
+    }
+
     /**
      *
-     * @return
-     * @throws SQLException
+     * @return @throws SQLException
      */
     public ArrayList<Song> Search() throws SQLException
     {
@@ -57,10 +82,10 @@ public class MyTunesDBManager
             ps.setString(2, searchString);
 
             ResultSet rs = ps.executeQuery();
-            
+
             ArrayList<Song> songs = new ArrayList<>();
-            
-            while(rs.next())
+
+            while (rs.next())
             {
                 int id = rs.getInt("Id");
                 String title = rs.getString("Title");
