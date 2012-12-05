@@ -92,6 +92,5 @@ public class SubAdminSong extends Menu
     private void doActionExit()
     {
         System.out.println("returning to Administration Menu");        
-        pause();
     }
 }
