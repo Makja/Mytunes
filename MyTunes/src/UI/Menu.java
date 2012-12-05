@@ -43,7 +43,7 @@ public abstract class Menu
     {
         clear();
         System.out.println();
-        System.out.println(header.toUpperCase());
+        System.out.println(header);
         System.out.println();
 
         for (int i = 0; i < menuItems.length; i++)

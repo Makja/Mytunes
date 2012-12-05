@@ -12,6 +12,10 @@ public class SubMenuAdmin extends Menu
 {
     private static final int EXIT_VALUE = 0;
     
+    /**
+     *  Opretter en submenu med titlen "Administration Menu" og to menu punkter,
+     *  "Song" og "Playlist"
+     */
     public SubMenuAdmin()
     {
         super("Administration Menu", 
@@ -26,16 +30,16 @@ public class SubMenuAdmin extends Menu
         switch (option)
         {
             case 1:
-                doActionSuboption1();
+                goToSongAdmin();
                 break;
             case 2:
-                doActionSuboption2();
+                goToPlaylistAdmin();
                 break;
             case EXIT_VALUE: doActionExit();
         }
     }
 
-    private void doActionSuboption1()
+    private void goToSongAdmin()
     {
         System.out.println("Song");
         
@@ -43,7 +47,7 @@ public class SubMenuAdmin extends Menu
         clear();
     }
 
-    private void doActionSuboption2()
+    private void goToPlaylistAdmin()
     {
         System.out.println("Playlist");
         pause();
