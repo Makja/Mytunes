@@ -102,8 +102,8 @@ public class SubAdminSong extends Menu
 
     private void updateSong()
     {
-        System.out.println("You are trying to update a song");
-        pause();
+        clear();
+        new SongUpdateMenu().run();
     }
 
     private void removeSong()
