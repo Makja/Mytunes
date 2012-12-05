@@ -128,4 +128,10 @@ public class Song
     {
         this.duration = duration;
     }
+    
+    @Override
+    public String toString()
+    {
+        return String.format("%3d %-30s %-30s %3d", id, title, artist, category, fileName, duration);
+    }
 }

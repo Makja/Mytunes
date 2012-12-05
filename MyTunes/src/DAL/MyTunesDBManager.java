@@ -50,7 +50,8 @@ public class MyTunesDBManager
             Scanner sc = new Scanner(System.in, "ISO-8859-1");
             System.out.println("Indtast Søgeord");
             String searchString = sc.nextLine();
-            String sql = "SELECT * FROM artist JOIN Song ON artist.id = Song.artistID WHERE artist.artistName LIKE ? OR Song.title LIKE ?";
+            String sql = "SELECT * FROM artist JOIN Song ON artist.id = Song.artistID JOIN Category ON Category.id = Song.categoryID"
+                    + " WHERE artist.Name LIKE ? OR Song.title LIKE ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, searchString);
             ps.setString(2, searchString);
@@ -63,7 +64,7 @@ public class MyTunesDBManager
             {
                 int id = rs.getInt("Id");
                 String title = rs.getString("Title");
-                String artist = rs.getString("Artist");
+                String artist = rs.getString("Name");
                 String category = rs.getString("Category");
                 String fileName = rs.getString("Filename");
                 int duration = rs.getInt("Duration");

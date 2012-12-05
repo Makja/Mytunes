@@ -40,7 +40,7 @@ public class MainMenu extends Menu
 
     private void goToAdminMenu()
     {
-        //
+        new SubAdminSong().run();
     }
 
     private void goToControlMenu()
