@@ -59,7 +59,6 @@ public class SubAdminPlaylist extends Menu
     private void listAllPlaylists()
     {
         System.out.println("Printing all playlists");
-
         pause();
     }
 
@@ -101,8 +100,7 @@ public class SubAdminPlaylist extends Menu
 
     private void doActionExit()
     {
-        System.out.println("You selected to exit.");
-        System.out.println("Bye Bye...");
+        System.out.println("Returning to Administration Menu");        
         pause();
     }
 }
