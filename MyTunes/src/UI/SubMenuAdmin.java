@@ -12,6 +12,10 @@ public class SubMenuAdmin extends Menu
 {
     private static final int EXIT_VALUE = 0;
     
+    /**
+     *  Opretter en submenu med titlen "Administration Menu" og to menu punkter,
+     *  "Song" og "Playlist"
+     */
     public SubMenuAdmin()
     {
         super("Administration Menu", 
