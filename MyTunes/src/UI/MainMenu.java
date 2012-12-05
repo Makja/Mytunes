@@ -41,12 +41,13 @@ public class MainMenu extends Menu
     private void goToAdminMenu()
     {
         new SubAdminSong().run();
+        clear();
     }
 
     private void goToControlMenu()
     {
-        System.out.println("You selected Control");
         new SubMenuCon().run();
+        clear();
     }
 
 }

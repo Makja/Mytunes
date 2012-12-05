@@ -41,12 +41,14 @@ public class SubMenuAdmin extends Menu
 
     private void goToSongAdmin()
     {
-        new SubAdminSong().run();       
+        new SubAdminSong().run();
+        clear();
     }
 
     private void goToPlaylistAdmin()
     {
-        new SubAdminPlaylist().run();      
+        new SubAdminPlaylist().run();
+        clear();
     }
 
     private void doActionExit()
