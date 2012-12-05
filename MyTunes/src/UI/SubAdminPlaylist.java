@@ -100,7 +100,6 @@ public class SubAdminPlaylist extends Menu
 
     private void doActionExit()
     {
-        System.out.println("Returning to Administration Menu");        
-        pause();
+        System.out.println("Returning to Administration Menu");     
     }
 }
