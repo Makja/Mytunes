@@ -85,8 +85,7 @@ public class SubMenuCon extends Menu
 
     private void doActionExit()
     {
-        System.out.println("You selected to exit.");
-        System.out.println("returned to");
+        System.out.println("Returning to Control");        
         pause();
     }
 }
