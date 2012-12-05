@@ -36,7 +36,7 @@ public class MainMenu extends Menu
 
     private void doActionOption1()
     {
-        new SubMenuAdmin().run();
+        //
     }
 
     private void doActionOption2()
