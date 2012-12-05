@@ -41,23 +41,21 @@ public class SubMenuAdmin extends Menu
 
     private void goToSongAdmin()
     {
-        System.out.println("Song");
-        
+        new SubAdminSong().run();        
         pause();
         clear();
     }
 
     private void goToPlaylistAdmin()
     {
-        System.out.println("Playlist");
+        new SubAdminPlaylist().run();
         pause();
         clear();
     }
 
     private void doActionExit()
     {
-        System.out.println("You selected to exit.");
-        System.out.println("Bye Bye...");
+        System.out.println("Returning to Administration");        
         pause();
     }
 }
