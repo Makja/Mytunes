@@ -46,37 +46,37 @@ public class SubAdminSong extends Menu
         switch (option)
         {
             case 1:
-                doActionSuboption1();
+                listAllSongs();
                 break;
             case 2:
-                Search();
+                songSearch();
                 break;
             case 3:
-                doActionSuboption3();
+                addSong();
                 break;
             case 4:
-                doActionSuboption4();
+                updateSong();
                 break;
             case 5:
-                doActionSuboption5();
+                removeSong();
                 break;
             case 6:
-                doActionSuboption6();
+                checkSongs();
                 break;
             case EXIT_VALUE:
                 doActionExit();
         }
     }
 
-    private void doActionSuboption1()
+    private void listAllSongs()
     {
         System.out.println("List of all songs");
         pause();
     }
 
-    private void Search()
+    private void songSearch()
     {
-
+        clear();
         try
         {   
             ArrayList<Song> songs = mgr.Search();
@@ -95,25 +95,25 @@ public class SubAdminSong extends Menu
         pause();
     }
 
-    private void doActionSuboption3()
+    private void addSong()
     {
         System.out.println("You are adding a song");
         pause();
     }
 
-    private void doActionSuboption4()
+    private void updateSong()
     {
         System.out.println("You are trying to update a song");
         pause();
     }
 
-    private void doActionSuboption5()
+    private void removeSong()
     {
         System.out.println("You are trying to delete a song");
         pause();
     }
 
-    private void doActionSuboption6()
+    private void checkSongs()
     {
         System.out.println("You are checking whether all the songs in the database exists");
         pause();
