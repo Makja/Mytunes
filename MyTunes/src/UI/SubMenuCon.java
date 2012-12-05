@@ -85,7 +85,7 @@ public class SubMenuCon extends Menu
 
     private void doActionExit()
     {
-        System.out.println("Returning to Control");        
+        System.out.println("Returning to MyTunes");        
         pause();
     }
 }
