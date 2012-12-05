@@ -80,7 +80,7 @@ public class SubAdminSong extends Menu
         {   
             ArrayList<Song> songs = mgr.Search();
 
-
+           clear();
            printSongHeader();
             for (Song s : songs)
             {
