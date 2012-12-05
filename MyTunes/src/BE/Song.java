@@ -132,6 +132,6 @@ public class Song
     @Override
     public String toString()
     {
-        return String.format("%-5d %30s %30s %10 %50 %5", id, title, artist, category, fileName, duration);
+        return String.format("%-5d %-30s %-30s %-10s %-20s %5d", id, title, artist, category, fileName, duration);
     }
 }

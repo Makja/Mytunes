@@ -79,7 +79,15 @@ public abstract class Menu
             }
         }
     }
-    
+
+    protected void printSongHeader()
+    {
+        System.out.println();
+        System.out.println(String.format("%-5s %-30s %-30s %-10s %-620s %5s",
+                "ID", "Title", "Artist", "Category", "Filename", "Duration"));
+        System.out.println();
+    }
+
     protected void clear()
     {
         for (int i = 0; i < 50; i++)
@@ -87,12 +95,12 @@ public abstract class Menu
             System.out.println();
         }
     }
-    
+
     protected void pause()
     {
         System.out.println("\nPress ENTER to continue...");
         new Scanner(System.in).nextLine();
     }
-    
+
     abstract protected void doAction(int option);
 }

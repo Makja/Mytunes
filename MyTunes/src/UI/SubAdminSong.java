@@ -6,7 +6,6 @@ package UI;
 
 import BE.Song;
 import BLL.MyTunesManager;
-import DAL.MyTunesDBManager;
 import java.util.ArrayList;
 
 /**
@@ -82,7 +81,7 @@ public class SubAdminSong extends Menu
             ArrayList<Song> songs = mgr.Search();
 
 
-           
+           printSongHeader();
             for (Song s : songs)
             {
                 System.out.println(s);
