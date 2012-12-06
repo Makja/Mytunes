@@ -4,17 +4,16 @@
  */
 package DAL;
 
-import BE.Artist;
+import BE.PlayList;
 import java.util.ArrayList;
 
 /**
  *
  * @author Daniel
  */
-public class ArtistDBManager
+public class PlaylistDBManager
 {
-    public ArrayList<Artist> ArtistId;
-    public ArrayList<Artist> ArtistName;
-    public ArrayList<Artist> AllArtists;
+    public ArrayList<PlayList> getAllPlaylists;
+    public ArrayList<PlayList> getTimeCreated;
     
 }

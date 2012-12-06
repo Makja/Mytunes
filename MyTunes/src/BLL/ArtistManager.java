@@ -21,6 +21,11 @@ public class ArtistManager
         adb = new DAL.ArtistDBManager();
     }
     
+    public ArrayList<Artist> getAllArtist()
+    {
+        return adb.AllArtists;
+    }
+    
     public ArrayList<Artist> getArtistById()
     {
         return adb.ArtistId;
@@ -31,7 +36,6 @@ public class ArtistManager
         return adb.ArtistName;
     }
     
-    public 
            
     
 }
