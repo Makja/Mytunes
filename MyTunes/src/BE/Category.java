@@ -20,6 +20,11 @@ public class Category
         this.categoryName = categoryName;
         
     }
+    
+    public Category (String categoryName)
+    {
+        this(-1, categoryName);
+    }
 
     /**
      * @return the categoryId
@@ -43,5 +48,11 @@ public class Category
     public void setCategoryName(String categoryName)
     {
         this.categoryName = categoryName;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return String.format("%-5d %-30s", categoryId, categoryName);
     }
 }

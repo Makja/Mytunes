@@ -20,6 +20,11 @@ public class Artist
         
     }
     
+    public Artist(String artistName)
+    {
+        this(-1, artistName);
+    }
+    
     public int getArtisId()
     {
         return getArtistId();
@@ -44,5 +49,11 @@ public class Artist
     public void setArtistName(String artistName)
     {
         this.artistName = artistName;
+    }
+    
+     @Override
+    public String toString()
+    {
+        return String.format("%-5d %-30s %-30s %-10s %-20s %5d", artistId, artistName);
     }
 }

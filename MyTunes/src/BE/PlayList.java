@@ -11,14 +11,14 @@ package BE;
 public class PlayList
 {
 
-    private final int id;
-    private String name;
+    private final int playlistId;
+    private String playlistName;
     private String created;
 
-    public PlayList(int id, String name, String created)
+    public PlayList(int playlistId, String playlistName, String created)
     {
-        this.id = id;
-        this.name = name;
+        this.playlistId = playlistId;
+        this.playlistName = playlistName;
         this.created = created;
     }
 
@@ -27,7 +27,7 @@ public class PlayList
      */
     public int getId()
     {
-        return id;
+        return playlistId;
     }
 
     /**
@@ -35,7 +35,7 @@ public class PlayList
      */
     public String getName()
     {
-        return name;
+        return playlistName;
     }
 
     /**
@@ -43,7 +43,7 @@ public class PlayList
      */
     public void setName(String name)
     {
-        this.name = name;
+        this.playlistName = name;
     }
 
     /**
@@ -60,5 +60,11 @@ public class PlayList
     public void setCreated(String created)
     {
         this.created = created;
+    }
+    
+     @Override
+    public String toString()
+    {
+        return String.format("%-5d %-30s %-30s", playlistId, playlistName, created);
     }
 }

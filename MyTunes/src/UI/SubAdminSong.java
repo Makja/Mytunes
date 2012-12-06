@@ -4,8 +4,10 @@
  */
 package UI;
 
+import BE.Artist;
+import BE.Category;
 import BE.Song;
-import BLL.MyTunesManager;
+import BLL.SongManager;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -18,7 +20,7 @@ public class SubAdminSong extends Menu
 {
 
     private static final int EXIT_VALUE = 0;
-    private MyTunesManager mgr;
+    private SongManager smgr;
 
     public SubAdminSong()
     {
@@ -32,7 +34,7 @@ public class SubAdminSong extends Menu
         EXIT_OPTION = EXIT_VALUE;
         try
         {
-            mgr = new MyTunesManager();
+            smgr = new SongManager();
         }
         catch (Exception ex)
         {
@@ -73,7 +75,7 @@ public class SubAdminSong extends Menu
     {
         try
         {
-            ArrayList<Song> songs = mgr.ListAll();
+            ArrayList<Song> songs = smgr.ListAll();
 
             clear();
             printSongHeader();
@@ -95,7 +97,7 @@ public class SubAdminSong extends Menu
         clear();
         try
         {
-            ArrayList<Song> songs = mgr.Search();
+            ArrayList<Song> songs = smgr.Search();
 
             clear();
             printSongHeader();
@@ -125,10 +127,10 @@ public class SubAdminSong extends Menu
             String title = sc.nextLine();
 
             System.out.print("Artist: ");
-            String artist = sc.nextLine();
+            String artistName = sc.nextLine();
 
             System.out.print("Category: ");
-            String category = sc.nextLine();
+            String categoryName = sc.nextLine();
             
             System.out.print("Filename: ");
             String fileName = sc.nextLine();
@@ -136,9 +138,9 @@ public class SubAdminSong extends Menu
             System.out.print("Duration");
             int duration = sc.nextInt();
 
-            Song s = new Song(title, artist, category, fileName, duration);
+            Song s = new Song(title, new Artist(artistName), new Category(categoryName), fileName, duration);
 
-            s = new MyTunesManager().AddSong(s);
+            s = new SongManager().AddSong(s);
 
             System.out.println();
             System.out.println("Song added with id = " + s.getId());

@@ -13,8 +13,8 @@ public class Song
 
     private final int id;
     private String title;
-    private String artist;
-    private String category;
+    private Artist artist;
+    private Category category;
     private String fileName;
     private int duration;
 
@@ -27,12 +27,12 @@ public class Song
      * @param fileName
      * @param duration
      */ 
-    public Song(String title, String artist, String category, String fileName, int duration)
+    public Song(String title, Artist artist, Category category, String fileName, int duration)
     {
         this(-1, title, artist, category, fileName, duration);
     }
     
-    public Song(int id, String title, String artist, String category, String fileName, int duration)
+    public Song(int id, String title, Artist artist, Category category, String fileName, int duration)
     {
         this.id = id;
         this.title = title;
@@ -79,7 +79,7 @@ public class Song
     /**
      * @return the artist
      */
-    public String getArtist()
+    public Artist getArtist()
     {
         return artist;
     }
@@ -87,7 +87,7 @@ public class Song
     /**
      * @param artist the artist to set
      */
-    public void setArtist(String artist)
+    public void setArtist(Artist artist)
     {
         this.artist = artist;
     }
@@ -95,7 +95,7 @@ public class Song
     /**
      * @return the category
      */
-    public String getCategory()
+    public Category getCategory()
     {
         return category;
     }
@@ -103,7 +103,7 @@ public class Song
     /**
      * @param category the category to set
      */
-    public void setCategory(String category)
+    public void setCategory(Category category)
     {
         this.category = category;
     }

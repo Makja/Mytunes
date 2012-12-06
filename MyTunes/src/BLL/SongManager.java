@@ -6,6 +6,7 @@ package BLL;
 
 import BE.Song;
 import DAL.SongDBManager;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ public class SongManager
 
     private SongDBManager sdb = null;
 
-    public SongManager()throws SQLException
+    public SongManager()throws SQLException, IOException
     {
         sdb = new SongDBManager();
     }
