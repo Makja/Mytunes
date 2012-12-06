@@ -65,6 +65,6 @@ public class PlayList
      @Override
     public String toString()
     {
-        return String.format("%-5d %-30s %-30s", playlistId, playlistName, created);
+        return String.format("%-5d %-30s ", playlistId, playlistName);
     }
 }

@@ -54,6 +54,6 @@ public class Artist
      @Override
     public String toString()
     {
-        return String.format("%-5d %-30s %-30s %-10s %-20s %5d", artistId, artistName);
+        return String.format("%-30s", artistName);
     }
 }

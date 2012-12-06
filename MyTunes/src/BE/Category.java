@@ -53,6 +53,6 @@ public class Category
     @Override
     public String toString()
     {
-        return String.format("%-5d %-30s", categoryId, categoryName);
+        return String.format(" %-10s", categoryName);
     }
 }
