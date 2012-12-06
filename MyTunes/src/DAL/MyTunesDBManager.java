@@ -103,22 +103,22 @@ public class MyTunesDBManager
     }
     public Song AddSong(Song s) throws SQLException
     {
-        String sql = "INSERT INTO Song AND Artist VALUES (?, ?, ?, ?,?)";
+        String sql = "INSERT INTO Song(Title, ArtistId, CategoryId, FileName, Duration)"+""
+              + "VALUES(?,?,?,?,?)";
         
         Connection con = dataSource.getConnection();
-
+       
         PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ps.setString(1, s.getTitle());
-        ps.setString(2, s.getArtist());
-        ps.setString(3, s.getCategory());
+        ps.setString(2, s.getArtist().getId());
         ps.setString(4, s.getFileName());
         ps.setInt(5, s.getDuration());
-        
+
 
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)
         {
-            throw new SQLException("Unable to insert Song");
+            throw new SQLException("Unable to add Song");
         }
 
         ResultSet keys = ps.getGeneratedKeys();
@@ -128,4 +128,10 @@ public class MyTunesDBManager
         return new Song(id, s);
     }
 }
+//    
+//    public Song AddArtist(Song s) throws SQLException
+//    {
+//        String sql = 'INSERT INTO Artist VALUES(?) LIKE
+//    }
+//}
 

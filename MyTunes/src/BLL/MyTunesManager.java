@@ -36,6 +36,7 @@ public class MyTunesManager
     
     public Song AddSong(Song s) throws SQLException
     {
+        Artist artist = ArtistManager.
         return db.AddSong(s);
     }
 }
