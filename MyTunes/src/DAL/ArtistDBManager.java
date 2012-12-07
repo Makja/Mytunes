@@ -5,8 +5,7 @@
 package DAL;
 
 import BE.Artist;
-import BE.Category;
-import BE.Song;
+import BLL.ArtistManager;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
@@ -15,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -23,6 +23,7 @@ import java.util.ArrayList;
 public class ArtistDBManager
 {
 
+    private ArtistManager am = null;
     private SQLServerDataSource dataSource;
 
     public ArrayList<Artist> getAllArtist() throws SQLException
@@ -47,31 +48,79 @@ public class ArtistDBManager
 
     }
 
-    public ArrayList<Artist> getArtistId() throws SQLServerException, SQLException
+//    public Artist getArtistId() throws SQLException
+//    {
+//        try (Connection con = dataSource.getConnection())
+//        {
+//            Statement st = con.createStatement();
+//            Scanner sc = new Scanner(System.in, "ISO-8859-1");
+//            System.out.println("Indtast ID");
+//            String searchString = sc.nextLine();
+//            String sql = ("SELECT * FROM Employee WHERE ID Like ?");
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setString(1, searchString);
+//
+//
+//            ResultSet rs = ps.executeQuery();
+//
+//            if (rs.next())
+//            {
+//                int artistId = rs.getInt("Id");
+//
+//                Artist a = new Artist(artistId);
+//               
+//            }
+//             return a
+//        }
+//
+//    }
+
+    public Artist getArtistName() throws SQLException
     {
+
         try (Connection con = dataSource.getConnection())
         {
-            Statement st = con.createStatement();
-            String sql("SELECT * FROM Employee WHERE ID Like ?");
+            Scanner sc = new Scanner(System.in, "ISO-8859-1");
+            System.out.println("Indtast Søgeord");
+            String searchString = sc.nextLine();
+            String sql = ("SELECT * FROM Artist WHERE Name Like ?");
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, IN);
+            ps.setString(1, searchString);
 
-            ArrayList<Artist> artists = new ArrayList<>();
 
-            while (ps.next())
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next())
             {
-                int artistId = ps.getInt("Id");
+                String artistName = rs.getString("Name");
 
-                Artist a = new Artist(artistId);
-                artists.add(a);
+                Artist a = new Artist(artistName);
+                return a;
             }
-            return artists;
+            return null;
         }
 
     }
 
-    public ArrayList<Artist> getArtistName()
+    public Artist addArtist(Artist artist) throws SQLException
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        String sql = "INSERT INTO Artist VALUES (?)";
+        Connection con = dataSource.getConnection();
+
+        PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+        ps.setString(1, artist.getArtistName());
+
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to insert Artist");
+        }
+
+        ResultSet keys = ps.getGeneratedKeys();
+        keys.next();
+        int id = keys.getInt(1);
+        
+        return new Artist(id, artist.getArtistName());
+
     }
 }

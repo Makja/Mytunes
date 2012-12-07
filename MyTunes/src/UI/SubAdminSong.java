@@ -149,9 +149,9 @@ public class SubAdminSong extends Menu
         {
             System.out.println("ERROR - Duration must be number");
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            System.out.println("ERROR - " + e.getMessage());
+            System.out.println("ERROR - " + ex.getMessage() +  " | " + ex.getCause());
         }
         pause();
     }

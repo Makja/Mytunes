@@ -6,6 +6,7 @@ package BLL;
 
 import BE.Category;
 import DAL.CategoryDBManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -24,16 +25,21 @@ public class CategoryManager
 
     public ArrayList<Category> getAllCategories()
     {
-        return cdb.getAllCategories;
+        return cdb.getAllCategories();
     }
     
-    public ArrayList<Category> getCategoryById()
+    public Category getCategoryById()
     {
-        return cdb.getCategoryById;
+        return cdb.getCategoryById();
     }
     
-    public ArrayList<Category> getCategoryByName()
+    public Category getCategoryByName(String categoryName) throws SQLException
     {
-        return cdb.getCategoryByName;
+        return cdb.getCategoryName();
+    }
+    
+    public Category addCategory(Category category) throws SQLException
+    {
+        return cdb.addCategory(category);
     }
 }

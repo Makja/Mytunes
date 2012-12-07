@@ -10,21 +10,26 @@ package BE;
  */
 public class Category
 {
+
     private final int categoryId;
     private String categoryName;
-    
-    
-    public Category(int categoryId,String categoryName)
+
+    public Category(int categoryId, String categoryName)
     {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
-        
+
     }
-    
-    public Category (String categoryName)
+
+    public Category(String categoryName)
     {
         this(-1, categoryName);
     }
+
+//    public Category(int categoryId)
+//    {
+//        this(categoryId, null);
+//    }
 
     /**
      * @return the categoryId
@@ -49,7 +54,7 @@ public class Category
     {
         this.categoryName = categoryName;
     }
-    
+
     @Override
     public String toString()
     {

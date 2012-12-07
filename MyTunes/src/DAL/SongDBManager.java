@@ -102,13 +102,12 @@ public class SongDBManager
 
     public Song AddSong(Song s) throws SQLException
     {
-          String sql = "INSERT INTO Song(Title, ArtistId, CategoryId, FileName, Duration)" + ""
-                + "VALUES(?,?,?,?,?)";
+
 
         Connection con = dataSource.getConnection();
 
-        String sql = "INSERT INTO Song(Title, FileName, Duration)" + ""
-                + "VALUES(?,?,?)";
+        String sql = "INSERT INTO Song(Title, ArtistId, CategoryId, FileName, Duration)" + ""
+                + "VALUES(?,?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ps.setString(1, s.getTitle());
         ps.setInt(2, s.getArtist().getArtistId());
@@ -129,10 +128,25 @@ public class SongDBManager
 
         return new Song(id, s);
     }
-   
-    public Song updateSong(song s) throws SQLException
-    {
-       Connection con = dataSource.getConnection(); 
-        return Song(id, s);
-    }
+//
+//    public void updateSong(Song s) throws SQLException
+//    {
+//
+//        String sql = "UPDATE Employee SET Name = ?, Address = ?, DepNum = ? WHERE Id = ?";
+//
+//        Connection con = dataSource.getConnection();
+//
+//        PreparedStatement ps = con.prepareStatement(sql);
+//        ps.setString(1, s.getTitle());
+//        ps.setString(2, s.());
+//        ps.setInt(3, e.getDepNum());
+//        ps.setInt(4, e.getId());
+//
+//        int affectedRows = ps.executeUpdate();
+//        if (affectedRows == 0)
+//        {
+//            throw new SQLException("Unable to update Employee");
+//        }
+//
+//    }
 }
