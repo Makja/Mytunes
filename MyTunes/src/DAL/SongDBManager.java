@@ -37,7 +37,7 @@ public class SongDBManager
         dataSource.setDatabaseName(props.getProperty("DATABASE"));
         dataSource.setUser(props.getProperty("USER"));
         dataSource.setPassword(props.getProperty("PASSWORD"));
-    }   
+    }
 
     public ArrayList<Song> Search() throws SQLException
     {
@@ -102,17 +102,25 @@ public class SongDBManager
 
     public Song AddSong(Song s) throws SQLException
     {
-        String sql = "INSERT INTO Song(Title, ArtistId, CategoryId, FileName, Duration)" + ""
-                + "VALUES(?,?,?,?,?)";
+
 
         Connection con = dataSource.getConnection();
 
+        String sql = "INSERT INTO Song(Title, FileName, Duration)" + ""
+                + "VALUES(?,?,?)";
         PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ps.setString(1, s.getTitle());
-        ps.setString(2, s.getArtist().getArtistName());
-        ps.setString(3, s.getCategory().getCategoryName());
-        ps.setString(4, s.getFileName());
-        ps.setInt(5, s.getDuration());
+        ps.setString(2, s.getFileName());
+        ps.setInt(3, s.getDuration());
+
+        String sql2 = "INSERT INTO Artist(Name) VALUES(?)";
+        PreparedStatement ps2 = con.prepareStatement(sql2, PreparedStatement.RETURN_GENERATED_KEYS);
+        ps2.setString(1, s.getArtist().getArtistName());
+
+        String sql3 = "INSERT INTO Category(Category) VALUES(?)";
+        PreparedStatement ps3 = con.prepareStatement(sql3, PreparedStatement.RETURN_GENERATED_KEYS);
+        ps3.setString(1, s.getCategory().getCategoryName());
+
 
 
         int affectedRows = ps.executeUpdate();
@@ -127,5 +135,11 @@ public class SongDBManager
 
         return new Song(id, s);
 
+    }
+   
+    public Song updateSong(song s) throws SQLException
+    {
+       Connection con = dataSource.getConnection(); 
+        return Song(id, s);
     }
 }

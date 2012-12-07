@@ -23,17 +23,17 @@ public class ArtistManager
     
     public ArrayList<Artist> getAllArtist()
     {
-        return adb.AllArtists;
+        return adb.getAllArtist();
     }
     
     public ArrayList<Artist> getArtistById()
     {
-        return adb.ArtistId;
+        return adb.getArtistId();
     }
     
     public ArrayList<Artist> getArtistByName()
     {
-        return adb.ArtistName;
+        return adb.getArtistName();
     }
     
            

@@ -145,10 +145,7 @@ public class SubAdminSong extends Menu
             System.out.println();
             System.out.println("Song added with id = " + s.getId());
         }
-        catch (InputMismatchException e)
-        {
-            System.out.println("ERROR - department id must be a number");
-        }
+        
         catch (Exception e)
         {
             System.out.println("ERROR - " + e.getMessage());
