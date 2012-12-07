@@ -17,7 +17,18 @@ public class Artist
     {
         this.artistId = artistId;
         this.artistName = artistName;
+        
     }
+
+    public Artist(String artistName)
+    {
+        this(-1, artistName);
+    }
+    
+//    public Artist(int artistId, Artist artist)
+//    {
+//        this(artistId, artist.getArtistName());
+//    }
     
     public String getArtistName()
     {
@@ -39,6 +50,7 @@ public class Artist
     {
         this.artistName = artistName;
     }
+    
     
      @Override
     public String toString()

@@ -135,7 +135,7 @@ public class SubAdminSong extends Menu
             System.out.print("Filename: ");
             String fileName = sc.nextLine();
             
-            System.out.print("Duration");
+            System.out.print("Duration: ");
             int duration = sc.nextInt();
 
             Song s = new Song(title, new Artist(artistName), new Category(categoryName), fileName, duration);
@@ -145,7 +145,10 @@ public class SubAdminSong extends Menu
             System.out.println();
             System.out.println("Song added with id = " + s.getId());
         }
-        
+        catch (InputMismatchException e)
+        {
+            System.out.println("ERROR - Duration must be number");
+        }
         catch (Exception e)
         {
             System.out.println("ERROR - " + e.getMessage());

@@ -18,10 +18,12 @@ public class SongManager
 {
 
     private SongDBManager sdb = null;
+    private ArtistManager am = null;
 
     public SongManager()throws SQLException, IOException
     {
         sdb = new SongDBManager();
+        am = new ArtistManager();
     }
     
     
@@ -37,6 +39,12 @@ public class SongManager
     
     public Song AddSong(Song s) throws SQLException
     {
+        
+        Artist artist = am.getArtistByName(s.getArtist().getArtistName());
+        if(artist == null)
+        {
+            artist = am.
+        }
         return sdb.AddSong(s);
     }
 }
