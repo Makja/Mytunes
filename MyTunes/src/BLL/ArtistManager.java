@@ -31,9 +31,14 @@ public class ArtistManager
         return adb.ArtistId;
     }
     
-    public ArrayList<Artist> getArtistByName()
+    public ArrayList<Artist> getArtistByName(String artistName)
     {
-        return adb.ArtistName;
+        return adb
+    }
+    
+    public Artist addArtist(Artist artist)
+    {
+        return adb.addArtist(artist);
     }
     
            

@@ -102,15 +102,15 @@ public class SongDBManager
 
     public Song AddSong(Song s) throws SQLException
     {
-        String sql = "INSERT INTO Song(Title, ArtistId, CategoryId, FileName, Duration)" + ""
+          String sql = "INSERT INTO Song(Title, ArtistId, CategoryId, FileName, Duration)" + ""
                 + "VALUES(?,?,?,?,?)";
 
         Connection con = dataSource.getConnection();
 
         PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ps.setString(1, s.getTitle());
-        ps.setString(2, s.getArtist().getArtistName());
-        ps.setString(3, s.getCategory().getCategoryName());
+        ps.setInt(2, s.getArtist().getArtistId());
+        ps.setInt(3, s.getCategory().getCategoryId());
         ps.setString(4, s.getFileName());
         ps.setInt(5, s.getDuration());
 
@@ -126,6 +126,7 @@ public class SongDBManager
         int id = keys.getInt(1);
 
         return new Song(id, s);
-
     }
+    
+  
 }
