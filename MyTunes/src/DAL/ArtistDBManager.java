@@ -7,7 +7,6 @@ package DAL;
 import BE.Artist;
 import BLL.ArtistManager;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,44 +47,41 @@ public class ArtistDBManager
 
     }
 
-//    public Artist getArtistId() throws SQLException
-//    {
-//        try (Connection con = dataSource.getConnection())
-//        {
-//            Statement st = con.createStatement();
-//            Scanner sc = new Scanner(System.in, "ISO-8859-1");
-//            System.out.println("Indtast ID");
-//            String searchString = sc.nextLine();
-//            String sql = ("SELECT * FROM Employee WHERE ID Like ?");
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setString(1, searchString);
-//
-//
-//            ResultSet rs = ps.executeQuery();
-//
-//            if (rs.next())
-//            {
-//                int artistId = rs.getInt("Id");
-//
-//                Artist a = new Artist(artistId);
-//               
-//            }
-//             return a
-//        }
-//
-//    }
+    public Artist getArtistId() throws SQLException
+    {
+        try (Connection con = dataSource.getConnection())
+        {
+            Scanner sc = new Scanner(System.in, "ISO-8859-1");
+            int searchString = sc.nextInt();
+            String sql = ("SELECT * FROM Artist WHERE ID = ?");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, searchString);
 
-    public Artist getArtistName() throws SQLException
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next())
+            {
+                int artistId = rs.getInt("Id");
+
+                Artist a = new Artist(artistId);
+                
+                return a;
+               
+            }
+            return null;
+        }
+
+    }
+
+    public Artist getArtistName(String name) throws SQLException
     {
 
         try (Connection con = dataSource.getConnection())
         {
-            Scanner sc = new Scanner(System.in, "ISO-8859-1");
-            System.out.println("Indtast Søgeord");
-            String searchString = sc.nextLine();
             String sql = ("SELECT * FROM Artist WHERE Name Like ?");
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, searchString);
+            ps.setString(1, name);
 
 
             ResultSet rs = ps.executeQuery();
