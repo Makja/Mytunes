@@ -6,6 +6,7 @@ package BLL;
 
 import BE.Category;
 import DAL.CategoryDBManager;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ public class CategoryManager
 
     private CategoryDBManager cdb = null;
 
-    public CategoryManager()
+    public CategoryManager() throws IOException
     {
         cdb = new CategoryDBManager();
     }
