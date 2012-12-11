@@ -8,23 +8,32 @@ import BE.Artist;
 import BLL.ArtistManager;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.Scanner;
 
 /**
  *
  * @author Daniel
  */
-public class ArtistDBManager
+public class ArtistDBManager extends ConnectionDBManager
 {
 
     private ArtistManager am = null;
     private SQLServerDataSource dataSource;
+    
+    public ArtistDBManager() throws IOException
+    {
+     
+    }
 
     public ArrayList<Artist> getAllArtist() throws SQLException
     {
@@ -75,17 +84,15 @@ public class ArtistDBManager
 //
 //    }
 
-    public Artist getArtistName() throws SQLException
+    public Artist getArtistName(String name) throws SQLException
     {
 
         try (Connection con = dataSource.getConnection())
         {
-            Scanner sc = new Scanner(System.in, "ISO-8859-1");
-            System.out.println("Indtast Søgeord");
-            String searchString = sc.nextLine();
+           
             String sql = ("SELECT * FROM Artist WHERE Name Like ?");
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, searchString);
+            ps.setString(1, name);
 
 
             ResultSet rs = ps.executeQuery();

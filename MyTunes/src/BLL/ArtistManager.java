@@ -6,6 +6,7 @@ package BLL;
 
 import BE.Artist;
 import DAL.ArtistDBManager;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ public class ArtistManager
 {
     private ArtistDBManager adb = null;
             
-    public ArtistManager()
+    public ArtistManager() throws IOException
     {
         adb = new DAL.ArtistDBManager();
     }
@@ -32,9 +33,9 @@ public class ArtistManager
 //        return adb.getArtistId();
 //    }
     
-    public Artist getArtistByName(String artistName) throws SQLException
+    public Artist getArtistByName(String name) throws SQLException
     {
-        return adb.getArtistName();
+        return adb.getArtistName(name);
     }
     
     public Artist addArtist(Artist artist) throws SQLException
