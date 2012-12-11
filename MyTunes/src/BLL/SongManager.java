@@ -27,6 +27,7 @@ public class SongManager
     {
         sdb = new SongDBManager();
         cm = new CategoryManager();
+        am = new ArtistManager();
     }
 
     public ArrayList<Song> Search() throws SQLException

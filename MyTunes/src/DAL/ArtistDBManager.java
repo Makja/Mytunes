@@ -74,23 +74,23 @@ public class ArtistDBManager
 
     }
 
-    public Artist getArtistName(String name) throws SQLException
+    public Artist getArtistName(String artistName) throws SQLException
     {
 
         try (Connection con = dataSource.getConnection())
         {
             String sql = ("SELECT * FROM Artist WHERE Name Like ?");
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, name);
+            ps.setString(1, artistName);
 
 
             ResultSet rs = ps.executeQuery();
 
             if (rs.next())
             {
-                String artistName = rs.getString("Name");
+                String name = rs.getString("Name");
 
-                Artist a = new Artist(artistName);
+                Artist a = new Artist(name);
                 return a;
             }
             return null;
