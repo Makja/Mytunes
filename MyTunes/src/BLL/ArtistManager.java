@@ -42,4 +42,6 @@ public class ArtistManager
     {
         return adb.addArtist(artist);
     }
+    
+ 
 }

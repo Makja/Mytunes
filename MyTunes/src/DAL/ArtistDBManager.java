@@ -28,7 +28,7 @@ public class ArtistDBManager extends ConnectionDBManager
 {
 
     private ArtistManager am = null;
-    private SQLServerDataSource dataSource;
+    
     
     public ArtistDBManager() throws IOException
     {

@@ -23,7 +23,7 @@ import java.util.Scanner;
 public class CategoryDBManager extends ConnectionDBManager
 {
 
-    private SQLServerDataSource dataSource;
+    
     
     public CategoryDBManager() throws IOException
     {
@@ -52,16 +52,14 @@ public class CategoryDBManager extends ConnectionDBManager
 
     }
     
-    public Category getCategoryName() throws SQLException
+    public Category getCategoryName(String name) throws SQLException
     {
         try (Connection con = dataSource.getConnection())
         {
-            Scanner sc = new Scanner(System.in, "ISO-8859-1");
-            System.out.println("Indtast Søgeord");
-            String searchString = sc.nextLine();
+            
             String sql = ("SELECT * FROM Category WHERE Name Like ?");
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, searchString);
+            ps.setString(1, name);
 
 
             ResultSet rs = ps.executeQuery();
