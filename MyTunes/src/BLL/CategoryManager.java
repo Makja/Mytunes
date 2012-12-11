@@ -36,7 +36,7 @@ public class CategoryManager
     
     public Category getCategoryByName(String categoryName) throws SQLException
     {
-        return cdb.getCategoryName();
+        return cdb.getCategoryName(categoryName);
     }
     
     public Category addCategory(Category category) throws SQLException

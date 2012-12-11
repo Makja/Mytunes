@@ -5,16 +5,12 @@
 package DAL;
 
 import BE.Category;
-import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
-import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Properties;
-import java.util.Scanner;
 
 /**
  *
@@ -23,7 +19,6 @@ import java.util.Scanner;
 public class CategoryDBManager extends ConnectionDBManager
 {
 
-    private SQLServerDataSource dataSource;
     
     public CategoryDBManager() throws IOException
     {
@@ -52,25 +47,24 @@ public class CategoryDBManager extends ConnectionDBManager
 
     }
     
-    public Category getCategoryName() throws SQLException
+    public Category getCategoryName(String categoryName) throws SQLException
     {
         try (Connection con = dataSource.getConnection())
         {
-            Scanner sc = new Scanner(System.in, "ISO-8859-1");
-            System.out.println("Indtast Søgeord");
-            String searchString = sc.nextLine();
-            String sql = ("SELECT * FROM Category WHERE Name Like ?");
+            
+            String sql = ("SELECT * FROM Category WHERE Category Like ?");
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, searchString);
+            ps.setString(1, categoryName);
 
 
             ResultSet rs = ps.executeQuery();
 
             if (rs.next())
             {
-                String categoryName = rs.getString("Category");
+                String name = rs.getString("Category");
+                int Id = rs.getInt("ID");
 
-                Category c = new Category(categoryName);
+                Category c = new Category(Id, name);
                 return c;
             }
             return null;

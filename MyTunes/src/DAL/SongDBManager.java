@@ -19,10 +19,8 @@ import java.util.Scanner;
  *
  * @author Daniel
  */
-public class SongDBManager
+public class SongDBManager extends ConnectionDBManager
 {
-
-    private SQLServerDataSource dataSource;
 
     public SongDBManager() throws IOException
     {

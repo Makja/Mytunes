@@ -5,11 +5,6 @@
 package DAL;
 
 import BE.Artist;
-import BLL.ArtistManager;
-import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Properties;
 import java.util.Scanner;
 
 /**
@@ -27,8 +21,6 @@ import java.util.Scanner;
 public class ArtistDBManager extends ConnectionDBManager
 {
 
-    private ArtistManager am = null;
-    private SQLServerDataSource dataSource;
     
     public ArtistDBManager() throws IOException
     {
@@ -73,8 +65,9 @@ public class ArtistDBManager extends ConnectionDBManager
             if (rs.next())
             {
                 int artistId = rs.getInt("Id");
+                String artistName = rs.getString("Name");
 
-                Artist a = new Artist(artistId);
+                Artist a = new Artist(artistId, artistName);
                 
                 return a;
                

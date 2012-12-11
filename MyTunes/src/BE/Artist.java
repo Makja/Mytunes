@@ -25,9 +25,9 @@ public class Artist
         this(-1, artistName);
     }
     
-    public Artist(int artistId)
+    public Artist(int artistId, Artist artist)
     {
-        this(artistId, null);
+        this(artistId, artist.getArtistName());
     }
 //    public Artist(int artistId, Artist artist)
 //    {
