@@ -28,10 +28,10 @@ public class ArtistManager
         return adb.getAllArtist();
     }
     
-//    public ArrayList<Artist> getArtistById() throws SQLException
-//    {
-//        return adb.getArtistId();
-//    }
+    public Artist getArtistById() throws SQLException
+    {
+        return adb.getArtistId();
+    }
     
     public Artist getArtistByName(String name) throws SQLException
     {
