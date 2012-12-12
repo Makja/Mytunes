@@ -3,8 +3,6 @@ package DAL;
 import BE.Artist;
 import BE.Category;
 import BE.Song;
-import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
-import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Properties;
 import java.util.Scanner;
 
 /**
@@ -21,9 +18,13 @@ import java.util.Scanner;
  */
 public class SongDBManager extends ConnectionDBManager
 {
+    private Song s;
+    private Artist a;
+    private Category c;
 
     public SongDBManager() throws IOException
     {
+        
 
     }
 
@@ -116,25 +117,27 @@ public class SongDBManager extends ConnectionDBManager
 
         return new Song(id, s);
     }
-//
-//    public void updateSong(Song s) throws SQLException
-//    {
-//
-//        String sql = "UPDATE Employee SET Name = ?, Address = ?, DepNum = ? WHERE Id = ?";
-//
-//        Connection con = dataSource.getConnection();
-//
-//        PreparedStatement ps = con.prepareStatement(sql);
-//        ps.setString(1, s.getTitle());
-//        ps.setString(2, s.());
-//        ps.setInt(3, e.getDepNum());
-//        ps.setInt(4, e.getId());
-//
-//        int affectedRows = ps.executeUpdate();
-//        if (affectedRows == 0)
-//        {
-//            throw new SQLException("Unable to update Employee");
-//        }
-//
-//    }
+
+    public void update(int Id) throws SQLException
+    {
+
+        String sql = "UPDATE Song SET Title = ?, ArtistID = ?, CategoryID = ?, FileName = ?, Duration = ? WHERE Id = ?";
+
+        Connection con = dataSource.getConnection();
+
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, s.getTitle());
+        ps.setInt(2, a.getArtistId());
+        ps.setInt(3, c.getCategoryId());
+        ps.setString(4, s.getFileName());
+        ps.setInt(5, s.getDuration());
+        ps.setInt(6, Id);
+
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to update Song");
+        }
+
+    }
 }

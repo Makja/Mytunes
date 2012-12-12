@@ -4,8 +4,6 @@
  */
 package BLL;
 
-import BE.Artist;
-import BE.Category;
 import BE.Song;
 import DAL.SongDBManager;
 import java.io.IOException;
@@ -43,5 +41,10 @@ public class SongManager
     public Song AddSong(Song s) throws SQLException
     {
         return sdb.AddSong(s);
+    }
+    
+    public void updateSong(int Id) throws SQLException
+    {
+        sdb.update(Id);
     }
 }
