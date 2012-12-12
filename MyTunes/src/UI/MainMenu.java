@@ -6,7 +6,7 @@ package UI;
 
 /**
  *Hovedmenuen
- * @author Stefan, Mak, Jonas og Daniel
+ * @author Mak, Jonas og Daniel
  */
 public class MainMenu extends Menu
 {
@@ -19,7 +19,7 @@ public class MainMenu extends Menu
      */
     public MainMenu()
     {
-        super("MyTunes", "Administration",
+        super("MyTunes", "Song Administration", "Playlist Administration",
                 "Control");
                 EXIT_OPTION = EXIT_VALUE;
     }
@@ -30,17 +30,26 @@ public class MainMenu extends Menu
         switch (option)
         {
             case 1:
-                goToAdminMenu();
+                goToSongMenu();
                 break;
             case 2:
+                goToPlaylistMenu();
+                break;
+            case 3:
                 goToControlMenu();
                 break;
         }
     }
 
-    private void goToAdminMenu()
+    private void goToSongMenu()
     {
-        new SubAdminSong().run();
+        new SubSongMenu().run();
+        clear();
+    }
+    
+    private void goToPlaylistMenu()
+    {
+        new SubPlaylistMenu().run();
         clear();
     }
 

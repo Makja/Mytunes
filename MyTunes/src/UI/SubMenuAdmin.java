@@ -41,7 +41,7 @@ public class SubMenuAdmin extends Menu
 
     private void goToSongAdmin()
     {
-        new SubAdminSong().run();
+        new SubSongMenu().run();
         clear();
     }
 
