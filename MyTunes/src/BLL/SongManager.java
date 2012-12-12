@@ -47,4 +47,11 @@ public class SongManager
     {
         sdb.RemoveSong(title);
     }
+    
+    public void updateSong(Song s) throws SQLException
+    {
+        sdb.update(s);
+    }
+    
+    
 }

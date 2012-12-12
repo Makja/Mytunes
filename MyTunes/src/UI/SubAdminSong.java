@@ -180,9 +180,33 @@ public class SubAdminSong extends Menu
 
     private void updateSong()
     {
+         clear();
+        System.out.println("Update song:");
+        System.out.println("");
+        try
+        {
+            
+            ArrayList<Song> songs = smgr.ListAll();
+
+
+            printSongHeader();
+            for (Song s : songs)
+            {
+                System.out.println(s);
+            }
+
+//            System.out.print("Select song Id: ");
+//            String title = new Scanner(System.in).nextLine();
+//
+//            smgr.updateSong(title);
+        }
+        catch (Exception ex)
+        {
+//            System.out.println(" ERROR - " + ex.getMessage());
+            ex.printStackTrace();
+            pause();
+        }
         
-        clear();
-        new SongUpdateMenu().run();
     }
 
     private void removeSong()

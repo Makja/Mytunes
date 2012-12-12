@@ -21,6 +21,7 @@ import java.util.Scanner;
  */
 public class SongDBManager extends ConnectionDBManager
 {
+
     private Song s;
     private Artist a;
     private Category c;
@@ -119,7 +120,7 @@ public class SongDBManager extends ConnectionDBManager
         return new Song(id, s);
     }
 
-    public void update(int Id) throws SQLException
+    public void update(Song s) throws SQLException
     {
 
         String sql = "UPDATE Song SET Title = ?, ArtistID = ?, CategoryID = ?, FileName = ?, Duration = ? WHERE Id = ?";
@@ -128,17 +129,34 @@ public class SongDBManager extends ConnectionDBManager
 
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, s.getTitle());
-        ps.setInt(2, a.getArtistId());
-        ps.setInt(3, c.getCategoryId());
+        ps.setInt(2, s.getArtist().getArtistId());
+        ps.setInt(3, s.getCategory().getCategoryId());
         ps.setString(4, s.getFileName());
         ps.setInt(5, s.getDuration());
-        ps.setInt(6, Id);
+        
 
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)
         {
             throw new SQLException("Unable to update Song");
         }
+    }
+    
 
+    public void RemoveSong(String title) throws SQLException
+    {
+        String sql = "DELETE FROM SONG WHERE Title = ?";
+
+        Connection con = dataSource.getConnection();
+
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, title);
+
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to delete Song");
+        }
     }
 }
+

@@ -45,9 +45,9 @@ public class ArtistManager
         return adb.addArtist(artist);
     }
     
-    public void updateArtist(int Id) throws SQLException
-    {
-        sdb.update(Id);
-    }
+//    public void updateArtist(int Id) throws SQLException
+//    {
+//        sdb.update(Id);
+//    }
  
 }
