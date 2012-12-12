@@ -43,7 +43,7 @@ public class MainMenu extends Menu
 
     private void goToSongMenu()
     {
-        new SubSongMenu().run();
+        new SubAdminSong().run();
         clear();
     }
     

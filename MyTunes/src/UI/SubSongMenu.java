@@ -65,7 +65,7 @@ public class SubSongMenu extends Menu
                 addSong();
                 break;
             case 4:
-                updateSong();
+//                updateSong();
                 break;
             case 5:
                 removeSong();
@@ -178,11 +178,11 @@ public class SubSongMenu extends Menu
         pause();
     }
 
-    private void updateSong()
-    {
-        clear();
-        new SongUpdateMenu().run();
-    }
+//    private void updateSong()
+//    {
+//        clear();
+//        new SongUpdateMenu().run();
+//    }
 
     private void removeSong()
     {

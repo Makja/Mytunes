@@ -53,5 +53,10 @@ public class SongManager
         sdb.update(s);
     }
     
+    public Song getById(int Id) throws SQLException
+    {
+        return sdb.getById(Id);
+    }
+    
     
 }

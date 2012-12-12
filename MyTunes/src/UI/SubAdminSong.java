@@ -180,8 +180,8 @@ public class SubAdminSong extends Menu
 
     private void updateSong()
     {
-         clear();
-        System.out.println("Update song:");
+      clear();
+        System.out.println("Update Song:");
         System.out.println("");
         try
         {
@@ -195,16 +195,24 @@ public class SubAdminSong extends Menu
                 System.out.println(s);
             }
 
-//            System.out.print("Select song Id: ");
-//            String title = new Scanner(System.in).nextLine();
-//
-//            smgr.updateSong(title);
+            System.out.print("Select song id: ");
+            int id = new Scanner(System.in).nextInt();
+            Song song = null;
+            for (Song s : songs)
+            {
+                if(s.getId() == id)
+                {
+                    song = s;
+                }
+            }
+
+            new SongUpdateMenu(song).run();
         }
-        catch (Exception ex)
+        catch (Exception e)
         {
-//            System.out.println(" ERROR - " + ex.getMessage());
-            ex.printStackTrace();
-            pause();
+//            System.out.println(" ERROR - " + e.getMessage());
+            e.printStackTrace();
+          
         }
         
     }

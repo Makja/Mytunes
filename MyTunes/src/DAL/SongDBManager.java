@@ -133,7 +133,8 @@ public class SongDBManager extends ConnectionDBManager
         ps.setInt(3, s.getCategory().getCategoryId());
         ps.setString(4, s.getFileName());
         ps.setInt(5, s.getDuration());
-        
+        ps.setInt(6, s.getId());
+
 
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)
@@ -141,7 +142,6 @@ public class SongDBManager extends ConnectionDBManager
             throw new SQLException("Unable to update Song");
         }
     }
-    
 
     public void RemoveSong(String title) throws SQLException
     {
@@ -158,5 +158,30 @@ public class SongDBManager extends ConnectionDBManager
             throw new SQLException("Unable to delete Song");
         }
     }
-}
 
+    public Song getById(int Id) throws SQLException
+    {
+        try (Connection con = dataSource.getConnection())
+        {
+            String sql = "SELECT Song.*, Artist.Name, Category.Category FROM Song, Artist, Category WHERE Song.Artistid = artist.id AND Song.Categoryid = Category.id AND Song.Id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, Id);
+
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next())
+            {
+                int id = rs.getInt("ID");
+                String title = rs.getString("Title");
+                String artistName = rs.getString("Name");
+                String categoryName = rs.getString("Category");
+                String fileName = rs.getString("Filename");
+                int duration = rs.getInt("Duration");
+
+                Song s = new Song(id, title, new Artist(artistName), new Category(categoryName), fileName, duration);
+                
+            }
+        }
+        return s;
+    }
+}
