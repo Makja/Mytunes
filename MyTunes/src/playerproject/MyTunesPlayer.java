@@ -12,7 +12,7 @@ import javazoom.jl.player.Player;
 
 /**
  *
- * @author bhp
+ * @author Daniel, Mak & Jonas
  */
 public class MyTunesPlayer
 {

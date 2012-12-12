@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author bhp
+ * @author Daniel, Mak & Jonas
  */
 public class PlayerProject
 {
