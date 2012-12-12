@@ -44,4 +44,9 @@ public class SongManager
     {
         return sdb.AddSong(s);
     }
+    
+    public void RemoveSong(String title) throws SQLException
+    {
+        sdb.RemoveSong(title);
+    }
 }

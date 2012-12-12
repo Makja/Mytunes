@@ -4,6 +4,7 @@ import BE.Artist;
 import BE.Category;
 import BE.Song;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -24,7 +25,6 @@ public class SongDBManager extends ConnectionDBManager
 
     public SongDBManager() throws IOException
     {
-
     }
 
     public ArrayList<Song> Search() throws SQLException
@@ -46,7 +46,7 @@ public class SongDBManager extends ConnectionDBManager
 
             while (rs.next())
             {
-                int id = rs.getInt("Id");
+                int id = rs.getInt("ID");
                 String title = rs.getString("Title");
                 String artistName = rs.getString("Name");
                 String categoryName = rs.getString("Category");
@@ -67,13 +67,13 @@ public class SongDBManager extends ConnectionDBManager
         try (Connection con = dataSource.getConnection())
         {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM artist JOIN Song ON artist.id = Song.artistID JOIN Category ON Category.id = Song.categoryID");
+            ResultSet rs = st.executeQuery("SELECT Song.*, Artist.Name, Category.Category FROM Song, Artist, Category WHERE Song.Artistid = artist.id AND Song.Categoryid = Category.id");
 
             ArrayList<Song> songs = new ArrayList<>();
 
             while (rs.next())
             {
-                int id = rs.getInt("Id");
+                int id = rs.getInt("ID");
                 String title = rs.getString("Title");
                 String artistName = rs.getString("Name");
                 String categoryName = rs.getString("Category");
@@ -116,7 +116,7 @@ public class SongDBManager extends ConnectionDBManager
 
         return new Song(id, s);
     }
-//
+
 //    public void updateSong(Song s) throws SQLException
 //    {
 //
@@ -137,4 +137,19 @@ public class SongDBManager extends ConnectionDBManager
 //        }
 //
 //    }
+    public void RemoveSong(String title) throws SQLException
+    {
+        String sql = "DELETE FROM SONG WHERE Title = ?";
+
+        Connection con = dataSource.getConnection();
+
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, title);
+
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to delete Song");
+        }
+    }
 }

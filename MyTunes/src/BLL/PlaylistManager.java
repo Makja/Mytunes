@@ -6,6 +6,7 @@ package BLL;
 
 import BE.PlayList;
 import DAL.PlaylistDBManager;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -14,20 +15,23 @@ import java.util.ArrayList;
  */
 public class PlaylistManager
 {
-    private DAL.PlaylistDBManager pdb = null;
+    private PlaylistDBManager pdb = null;
     
-    public PlaylistManager()
+    public PlaylistManager() throws IOException
     {
         pdb = new PlaylistDBManager();
     }
     
-    public ArrayList<PlayList> getAllPlaylists()
-    {
-        return pdb.getAllPlaylists;
-    }
-    
-    public ArrayList<PlayList> getTimeCreated()
-    {
-        return pdb.getTimeCreated;
-    }
+//    public ArrayList<PlayList> getAllPlaylists()
+//    {
+//        return pdb.getAllPlaylists;
+//    }
+//    public ArrayList<PlayList> getAllSongsInPlaylist()
+//    {
+//        return pdb.getAllSongsInPlaylist();
+//    }
+//    public ArrayList<PlayList> getTimeCreated()
+//    {
+//        return pdb.getTimeCreated;
+//    }
 }

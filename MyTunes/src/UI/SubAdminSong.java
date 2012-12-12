@@ -186,8 +186,31 @@ public class SubAdminSong extends Menu
 
     private void removeSong()
     {
-        System.out.println("You are trying to delete a song");
-        pause();
+         clear();
+        System.out.println("Remove song:");
+        System.out.println("");
+        try
+        {
+            
+            ArrayList<Song> songs = smgr.ListAll();
+
+
+            printSongHeader();
+            for (Song s : songs)
+            {
+                System.out.println(s);
+            }
+
+            System.out.print("Select song title: ");
+            String title = new Scanner(System.in).nextLine();
+
+            smgr.RemoveSong(title);
+        }
+        catch (Exception ex)
+        {
+            System.out.println(" ERROR - " + ex.getMessage());
+            pause();
+        }
     }
 
     private void checkSongs()
