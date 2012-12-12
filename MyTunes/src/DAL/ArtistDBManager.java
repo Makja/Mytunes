@@ -91,9 +91,10 @@ public class ArtistDBManager extends ConnectionDBManager
 
             if (rs.next())
             {
+                int Id = rs.getInt("ID");
                 String name = rs.getString("Name");
 
-                Artist a = new Artist(name);
+                Artist a = new Artist(Id, name);
                 return a;
             }
             return null;
