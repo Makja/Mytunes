@@ -43,7 +43,7 @@ public abstract class Menu
     {
         clear();
         System.out.println();
-        System.out.println(header);
+        System.out.println(header);         //henter header og viser den
         System.out.println();
 
         for (int i = 0; i < menuItems.length; i++)
@@ -80,7 +80,7 @@ public abstract class Menu
         }
     }
 
-    protected void printSongHeader()
+    protected void printSongHeader()            //viser ID; Title, Artist... som overskrifter
     {
         System.out.println();
         System.out.println(String.format("%-5s %-30s %-30s %-10s %-20s %5s",
