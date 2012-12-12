@@ -5,16 +5,12 @@
 package DAL;
 
 import BE.Category;
-import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
-import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Properties;
-import java.util.Scanner;
 
 /**
  *
@@ -52,23 +48,24 @@ public class CategoryDBManager extends ConnectionDBManager
 
     }
     
-    public Category getCategoryName(String name) throws SQLException
+    public Category getCategoryName(String categoryName) throws SQLException
     {
         try (Connection con = dataSource.getConnection())
         {
             
-            String sql = ("SELECT * FROM Category WHERE Name Like ?");
+            String sql = ("SELECT * FROM Category WHERE Category Like ?");
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, name);
+            ps.setString(1, categoryName);
 
 
             ResultSet rs = ps.executeQuery();
 
             if (rs.next())
             {
-                String categoryName = rs.getString("Category");
+                String name = rs.getString("Category");
+                int Id = rs.getInt("ID");
 
-                Category c = new Category(categoryName);
+                Category c = new Category(Id, name);
                 return c;
             }
             return null;

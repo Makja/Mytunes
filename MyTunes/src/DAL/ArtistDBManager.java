@@ -5,11 +5,6 @@
 package DAL;
 
 import BE.Artist;
-import BLL.ArtistManager;
-import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Properties;
 import java.util.Scanner;
 
 /**
@@ -27,8 +21,6 @@ import java.util.Scanner;
 public class ArtistDBManager extends ConnectionDBManager
 {
 
-    private ArtistManager am = null;
-    
     
     public ArtistDBManager() throws IOException
     {
@@ -73,8 +65,9 @@ public class ArtistDBManager extends ConnectionDBManager
             if (rs.next())
             {
                 int artistId = rs.getInt("Id");
+                String artistName = rs.getString("Name");
 
-                Artist a = new Artist(artistId);
+                Artist a = new Artist(artistId, artistName);
                 
                 return a;
                
@@ -84,23 +77,23 @@ public class ArtistDBManager extends ConnectionDBManager
 
     }
 
-    public Artist getArtistName(String name) throws SQLException
+    public Artist getArtistName(String artistName) throws SQLException
     {
 
         try (Connection con = dataSource.getConnection())
         {
             String sql = ("SELECT * FROM Artist WHERE Name Like ?");
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, name);
+            ps.setString(1, artistName);
 
 
             ResultSet rs = ps.executeQuery();
 
             if (rs.next())
             {
-                String artistName = rs.getString("Name");
+                String name = rs.getString("Name");
 
-                Artist a = new Artist(artistName);
+                Artist a = new Artist(name);
                 return a;
             }
             return null;

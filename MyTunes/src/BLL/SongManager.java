@@ -46,7 +46,7 @@ public class SongManager
         Artist artist = am.getArtistByName(s.getArtist().getArtistName());
         if (artist == null)
         {
-            artist = am.addArtist(artist);
+            artist = am.addArtist(s.getArtist());
         }
         s.setArtist(artist);
 
@@ -55,7 +55,7 @@ public class SongManager
         Category category = cm.getCategoryByName(s.getCategory().getCategoryName());
         if (category == null)
         {
-            category = cm.addCategory(category);
+            category = cm.addCategory(s.getCategory());
         }
         s.setCategory(category);
 

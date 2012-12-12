@@ -33,9 +33,9 @@ public class ArtistManager
         return adb.getArtistId();
     }
     
-    public Artist getArtistByName(String name) throws SQLException
+    public Artist getArtistByName(String artistName) throws SQLException
     {
-        return adb.getArtistName(name);
+        return adb.getArtistName(artistName);
     }
     
     public Artist addArtist(Artist artist) throws SQLException
