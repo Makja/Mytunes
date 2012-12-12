@@ -4,8 +4,6 @@
  */
 package BLL;
 
-import BE.Artist;
-import BE.Category;
 import BE.Song;
 import DAL.SongDBManager;
 import java.io.IOException;
