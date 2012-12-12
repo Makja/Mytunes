@@ -42,23 +42,6 @@ public class SongManager
 
     public Song AddSong(Song s) throws SQLException
     {
-
-        Artist artist = am.getArtistByName(s.getArtist().getArtistName());
-        if (artist == null)
-        {
-            artist = am.addArtist(s.getArtist());
-        }
-        s.setArtist(artist);
-
-
-
-        Category category = cm.getCategoryByName(s.getCategory().getCategoryName());
-        if (category == null)
-        {
-            category = cm.addCategory(s.getCategory());
-        }
-        s.setCategory(category);
-
         return sdb.AddSong(s);
     }
 }
