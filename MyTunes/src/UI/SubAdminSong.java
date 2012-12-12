@@ -180,6 +180,7 @@ public class SubAdminSong extends Menu
 
     private void updateSong()
     {
+        
         clear();
         new SongUpdateMenu().run();
     }

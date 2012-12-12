@@ -4,6 +4,12 @@
  */
 package UI;
 
+import BE.Artist;
+import BE.Category;
+import BE.Song;
+import BLL.SongManager;
+import java.util.Scanner;
+
 /**
  *
  * @author Daniel
@@ -12,7 +18,11 @@ public class SongUpdateMenu extends Menu
 {
 
     private static final int EXIT_VALUE = 0;
-
+    private SongManager smgr;
+    private Song s;
+    private Artist a;
+    private Category c;
+    
     public SongUpdateMenu()
     {
         super("Update a song",
@@ -21,6 +31,16 @@ public class SongUpdateMenu extends Menu
                 "Update Duration",
                 "Update Category");
         EXIT_OPTION = EXIT_VALUE;
+        try
+        {
+            smgr = new SongManager();
+        }
+        catch (Exception ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+
+        }
+
     }
 
     @Override
@@ -46,25 +66,33 @@ public class SongUpdateMenu extends Menu
 
     private void updateTitle()
     {
-        System.out.println("You are trying to update the song title");
-        pause();
+        System.out.println();
+        System.out.print("New Name: ");
+        String title = new Scanner(System.in, "ISO-8859-1").nextLine();
+        s.setTitle(title);
     }
 
     private void updateArtist()
     {
-        System.out.println("You are trying to update the song artist");
-        pause();
+        System.out.println();
+        System.out.print("New Artist: ");
+        String name = new Scanner(System.in, "ISO-8859-1").nextLine();
+        a.setArtistName(name);
     }
 
     private void updateDuration()
     {
-        System.out.println("You are trying to update the song duration");
-        pause();
+        System.out.println();
+        System.out.print("New Duration: ");
+        int duration = new Scanner(System.in, "ISO-8859-1").nextInt();
+        s.setDuration(duration);
     }
 
     private void updateCategory()
     {
-        System.out.println("You are trying to update the song genre");
-        pause();
+        System.out.println();
+        System.out.print("New Category: ");
+        String category = new Scanner(System.in, "ISO-8859-1").nextLine();
+        c.setCategoryName(category);
     }
 }
