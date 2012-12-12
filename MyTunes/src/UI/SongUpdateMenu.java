@@ -18,12 +18,11 @@ public class SongUpdateMenu extends Menu
 {
 
     private static final int EXIT_VALUE = 0;
-    private SongManager smgr;
     private Song s;
     private Artist a;
     private Category c;
-    
-    public SongUpdateMenu()
+
+    public SongUpdateMenu(Song song)
     {
         super("Update a song",
                 "Update Title",
@@ -31,21 +30,14 @@ public class SongUpdateMenu extends Menu
                 "Update Duration",
                 "Update Category");
         EXIT_OPTION = EXIT_VALUE;
-        try
-        {
-            smgr = new SongManager();
-        }
-        catch (Exception ex)
-        {
-            System.out.println("ERROR - " + ex.getMessage());
-
-        }
+     s = song;
 
     }
 
     @Override
     protected void doAction(int option)
     {
+        
         switch (option)
         {
             case 1:
@@ -61,6 +53,9 @@ public class SongUpdateMenu extends Menu
                 updateCategory();
                 break;
             case EXIT_VALUE:
+                doActionExit();
+                
+            
         }
     }
 
@@ -94,5 +89,24 @@ public class SongUpdateMenu extends Menu
         System.out.print("New Category: ");
         String category = new Scanner(System.in, "ISO-8859-1").nextLine();
         c.setCategoryName(category);
+    }
+
+    private void saveChanges()
+    {
+        try
+        {
+            SongManager smgr = new SongManager();
+            smgr.updateSong(s);
+        }
+        catch (Exception e)
+        {
+            System.out.println("ERROR - " + e.getMessage());
+            pause();
+        }
+    }
+
+    private void doActionExit()
+    {
+        saveChanges();
     }
 }
