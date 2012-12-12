@@ -107,6 +107,7 @@ public class ArtistDBManager extends ConnectionDBManager
         Connection con = dataSource.getConnection();
 
         PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+        
         ps.setString(1, artist.getArtistName());
 
         int affectedRows = ps.executeUpdate();

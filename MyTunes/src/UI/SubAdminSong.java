@@ -151,8 +151,8 @@ public class SubAdminSong extends Menu
         }
         catch (Exception ex)
         {
-//            System.out.println("ERROR - " + ex.getMessage());
-            ex.printStackTrace();
+            System.out.println("ERROR - " + ex.getMessage());
+         
         }
         pause();
     }
