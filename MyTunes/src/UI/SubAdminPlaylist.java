@@ -4,6 +4,12 @@
  */
 package UI;
 
+import BE.PlayList;
+import BE.Song;
+import BLL.PlaylistManager;
+import BLL.SongManager;
+import java.util.ArrayList;
+
 /**
  *
  * @author Mak, Jonas og Daniel
@@ -16,6 +22,7 @@ public class SubAdminPlaylist extends Menu
 {
 
     private static final int EXIT_VALUE = 0;
+     private PlaylistManager pmgr;
 
     public SubAdminPlaylist()
     {
@@ -62,7 +69,22 @@ public class SubAdminPlaylist extends Menu
 
     private void listAllPlaylists()
     {
-        System.out.println("Printing all playlists");
+        try
+        {
+            ArrayList<PlayList> playlists = pmgr.getAllPlaylists();
+
+            clear();
+            printSongHeader2();
+
+            for (PlayList p : playlists)
+            {
+                System.out.println(p);
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(" ERROR - " + e.getMessage());
+        }
         pause();
     }
 

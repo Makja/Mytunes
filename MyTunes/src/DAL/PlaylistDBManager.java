@@ -23,32 +23,32 @@ import java.util.Scanner;
  */
 public class PlaylistDBManager extends ConnectionDBManager
 {
-
+    private PlayList p;
+    
     public PlaylistDBManager() throws IOException  
     {
         
-//    }
-//     public ArrayList<PlayList> getAllPlaylists() throws SQLException
-//    {
-//       try (Connection con = dataSource.getConnection())
-//        {
-//            Statement st = con.createStatement();
-//            ResultSet rs = st.executeQuery("SELECT * FROM Playlist");
-//
-//            ArrayList<Playlist> playlists = new ArrayList<>();
-//
-//            while (rs.next())
-//            {
-//                int id = rs.getInt("ID");
-//                String title = rs.getString("Title");
-//                String artistName = rs.getString("Name");
-//                String categoryName = rs.getString("Category");
-//                String fileName = rs.getString("Filename");
-//                int duration = rs.getInt("Duration");
-//
-//                Song s = new Song(id, title, new Artist(artistName), new Category(categoryName), fileName, duration);
-//                songs.add(s);
-//            }
-//            return ;
+    }
+     public ArrayList<PlayList> getAllPlaylists() throws SQLException
+    {
+       try (Connection con = dataSource.getConnection())
+        {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM Playlist");
+
+            ArrayList<PlayList> playlists = new ArrayList<>();
+
+            while (rs.next())
+            {
+                int playlistId = rs.getInt("ID");
+                String playlistName = rs.getString("Name");
+                String created = rs.getString("Created");
+                
+                PlayList p = new PlayList(playlistId, playlistName, created);
+                playlists.add(p);
+            }
+            return playlists;
         }
+    }
 }
+

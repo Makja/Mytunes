@@ -7,6 +7,7 @@ package BLL;
 import BE.PlayList;
 import DAL.PlaylistDBManager;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -22,9 +23,9 @@ public class PlaylistManager
         pdb = new PlaylistDBManager();
     }
     
-//    public ArrayList<PlayList> getAllPlaylists()
-//    {
-//        return pdb.getAllPlaylists;
+    public ArrayList<PlayList> getAllPlaylists() throws SQLException
+    {
+        return pdb.getAllPlaylists();
 //    }
 //    public ArrayList<PlayList> getAllSongsInPlaylist()
 //    {
@@ -34,4 +35,5 @@ public class PlaylistManager
 //    {
 //        return pdb.getTimeCreated;
 //    }
+    }
 }

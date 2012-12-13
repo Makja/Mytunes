@@ -87,6 +87,13 @@ public abstract class Menu
                 "ID", "Title", "Artist", "Category", "Filename", "Duration"));
         System.out.println();
     }
+    
+    protected void printSongHeader2()
+    {
+        System.out.println();
+        System.out.println(String.format("%-30s %-30s %-30s","ID","Name","Created"));
+        System.out.println();
+    }
 
     protected void clear()
     {
