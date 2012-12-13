@@ -51,13 +51,13 @@ public class SubPlaylistMenu extends Menu
         switch (option)
         {
             case 1:
-                listAllPlaylists();
+                listAllPlaylists();     //lister alle playlister op menu
                 break;
             case 2:
-                allSongPlaylist();
+                allSongPlaylist();      //viser alle sange på playliste menu
                 break;
             case 3:
-                addPlaylist();
+                addPlaylist();          //tilføj en play liste menu
                 break;
             case 4:
                 removePlaylist();

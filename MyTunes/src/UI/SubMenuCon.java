@@ -10,7 +10,11 @@ import playerproject.MyTunesPlayer;
 
 /**
  *
- * @author Stefan, Mak, Jonas og Daniel
+ * @author Mak, Jonas og Daniel
+ */
+/**
+ * Constructor, opretter en submenu med titlen "Song Menu" og 6 menu punkter,
+ * til at styrer musikken
  */
 public class SubMenuCon extends Menu {
 
@@ -32,9 +36,12 @@ public class SubMenuCon extends Menu {
     protected void doAction(int option) {
         switch (option) {
             case 1:
-                try {
-                    playASong();
-                } catch (Exception ex) {
+                try 
+                {
+                    playASong();        //afspil sang menu
+                } 
+                catch (Exception ex) 
+                {
                     Logger.getLogger(SubMenuCon.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 break;
@@ -42,7 +49,7 @@ public class SubMenuCon extends Menu {
                 playAPlaylist();
                 break;
             case 3:
-                stopPlaying();
+                stopPlaying();          //stop sangen menu
                 break;
 
             case 4:
@@ -60,18 +67,18 @@ public class SubMenuCon extends Menu {
     }
 
     private void playASong() throws Exception {
-        p = new MyTunesPlayer("01-bryan_adams_-_tonight_we_have_the_stars.mp3");
-        p.play();
+        p = new MyTunesPlayer("01-bryan_adams_-_tonight_we_have_the_stars.mp3");    //afspiller sangen fra Mytunesplayer
+        p.play();                                                                   
         System.out.println("You select Play");
 
     }
 
-    private void playAPlaylist() {
+    private void playAPlaylist() {      
         System.out.println("You select Play list");
 
     }
 
-    private void stopPlaying() {
+    private void stopPlaying() {                                //Stopper afspilningen af sangen, via MyTunesPlayer
         p.stop();
         System.out.println("You tried to stop the playback");
 

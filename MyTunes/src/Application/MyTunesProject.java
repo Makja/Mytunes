@@ -8,8 +8,12 @@ import UI.MainMenu;
 
 /**
  *
- * @author bhp
+ * @author Mak, Daniel & Jonas
  */
+
+/**
+     * Starter vores MyTunes program      
+     */
 public class MyTunesProject
 {
 

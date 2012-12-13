@@ -16,8 +16,12 @@ import java.util.Scanner;
 
 /**
  *
- * @author Stefan, Mak, Jonas og Daniel
+ * @author Mak, Jonas og Daniel
  */
+/**
+     * Constructor, opretter en submenu med titlen "Song Menu" og 
+     * 6 menuer, til at liste, søge, tilføje/slette sange.
+     */
 public class SubAdminSong extends Menu
 {
 
@@ -56,19 +60,19 @@ public class SubAdminSong extends Menu
         switch (option)
         {
             case 1:
-                listAllSongs();
+                listAllSongs();         //lister alle sange op
                 break;
             case 2:
-                songSearch();
+                songSearch();           //søger en bestemt sang
                 break;
             case 3:
-                addSong();
+                addSong();              //tilføjer en sang
                 break;
             case 4:
                 updateSong();
                 break;
             case 5:
-                removeSong();
+                removeSong();           //fjerner en sang
                 break;
             case 6:
                 checkSongs();
@@ -78,11 +82,11 @@ public class SubAdminSong extends Menu
         }
     }
 
-    private void listAllSongs()
+    private void listAllSongs()         //lister alle sange op
     {
         try
         {
-            ArrayList<Song> songs = smgr.ListAll();
+            ArrayList<Song> songs = smgr.ListAll();     
 
             clear();
             printSongHeader();
@@ -99,7 +103,7 @@ public class SubAdminSong extends Menu
         pause();
     }
 
-    private void songSearch()
+    private void songSearch()       //søger en bestemt sang
     {
         clear();
         try
@@ -120,7 +124,7 @@ public class SubAdminSong extends Menu
         pause();
     }
 
-    private void addSong()
+    private void addSong()          //tilføjer en sang
     {
         
         
@@ -151,7 +155,7 @@ public class SubAdminSong extends Menu
             
             if (a == null)
             {
-                a = amgr.addArtist(new Artist(-1, artistName));
+                a = amgr.addArtist(new Artist(-1, artistName)); 
             }
 
             Category c = cmgr.getCategoryByName(categoryName);

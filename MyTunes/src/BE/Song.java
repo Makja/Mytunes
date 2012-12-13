@@ -6,7 +6,7 @@ package BE;
 
 /**
  *
- * @author Mak
+ * @author Mak, Daniel & Jonas
  */
 public class Song
 {

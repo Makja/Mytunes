@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Daniel
+ * @author Mak, Daniel & Jonas
  */
 public class SongUpdateMenu extends Menu
 {

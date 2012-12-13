@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Stefan, Mak, Jonas og Daniel
+ * @author Mak, Jonas og Daniel
  */
 public class SubSongMenu extends Menu
 {

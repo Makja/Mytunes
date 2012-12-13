@@ -6,7 +6,7 @@ package BE;
 
 /**
  *
- * @author Daniel
+ * @author Mak, Daniel & Jonas
  */
 public class Category
 {

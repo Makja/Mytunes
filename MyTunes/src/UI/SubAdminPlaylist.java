@@ -6,8 +6,12 @@ package UI;
 
 /**
  *
- * @author Stefan, Mak, Jonas og Daniel
+ * @author Mak, Jonas og Daniel
  */
+/**
+     * Constructor, opretter en submenu med titlen "Playlist menu" og 
+     * 7 menu punkter, til at styrer playlisterne.
+     */
 public class SubAdminPlaylist extends Menu
 {
 
@@ -31,14 +35,14 @@ public class SubAdminPlaylist extends Menu
     {
         switch (option)
         {
-            case 1:
+            case 1:                     //Menupunkt til at vise alle playlister
                 listAllPlaylists();
                 break;
             case 2:
                 listSongsInAPlaylist();
                 break;
             case 3:
-                AddAPlaylist();
+                AddAPlaylist();         //adder en ny playlist
                 break;
             case 4:
                 removePlaylist();
@@ -47,7 +51,7 @@ public class SubAdminPlaylist extends Menu
                 reOrderPlaylist();
                 break;
             case 6:
-                addSongToPlaylist();
+                addSongToPlaylist();     //tilføjer sang til en playliste
                 break;
             case 7:
                 removeSongFromPlaylist();

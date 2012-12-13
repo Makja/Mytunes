@@ -6,7 +6,7 @@ package UI;
 
 /**
  *
- * @author Stefan, Mak, Jonas og Daniel
+ * @author Mak, Jonas og Daniel
  */
 public class SubMenuAdmin extends Menu
 {
@@ -39,19 +39,19 @@ public class SubMenuAdmin extends Menu
         }
     }
 
-    private void goToSongAdmin()
+    private void goToSongAdmin()        //opretter sub song menuen
     {
         new SubSongMenu().run();
         clear();
     }
 
-    private void goToPlaylistAdmin()
+    private void goToPlaylistAdmin()        //opretter play list menuen
     {
         new SubAdminPlaylist().run();
         clear();
     }
 
-    private void doActionExit()
+    private void doActionExit()             //går tilbage til menuen
     {
         System.out.println("Returning to MyTunes");        
         pause();

@@ -5,7 +5,7 @@
 package UI;
 
 /**
- *Hovedmenuen
+ * Hovedmenuen
  * @author Mak, Jonas og Daniel
  */
 public class MainMenu extends Menu
