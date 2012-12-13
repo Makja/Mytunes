@@ -47,7 +47,7 @@ public class SubMenuAdmin extends Menu
 
     private void goToPlaylistAdmin()        //opretter play list menuen
     {
-        new SubAdminPlaylist().run();
+        new SubPlaylistMenu().run();
         clear();
     }
 

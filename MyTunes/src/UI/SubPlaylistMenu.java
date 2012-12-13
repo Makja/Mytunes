@@ -40,6 +40,7 @@ public class SubPlaylistMenu extends Menu
             smgr = new SongManager();
             amgr = new ArtistManager();
             cmgr = new CategoryManager();
+            pmgr = new PlaylistManager();
             
         }
         catch (Exception ex)
