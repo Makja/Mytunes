@@ -91,7 +91,7 @@ public abstract class Menu
     protected void printSongHeader2()
     {
         System.out.println();
-        System.out.println(String.format("%-30s %-30s %-30s","ID","Name","Created"));
+        System.out.println(String.format("%-5s %-30s %-30s","ID","Name","Created"));
         System.out.println();
     }
 

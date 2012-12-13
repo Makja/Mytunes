@@ -4,6 +4,8 @@
  */
 package BE;
 
+import java.util.Date;
+
 /**
  *
  * @author Mak, Daniel & Jonas
@@ -13,9 +15,9 @@ public class PlayList
 
     private final int playlistId;
     private String playlistName;
-    private String created;
+    private Date created;
 
-    public PlayList(int playlistId, String playlistName, String created)
+    public PlayList(int playlistId, String playlistName, Date created)
     {
         this.playlistId = playlistId;
         this.playlistName = playlistName;
@@ -49,7 +51,7 @@ public class PlayList
     /**
      * @return the created
      */
-    public String getCreated()
+    public Date getCreated()
     {
         return created;
     }
@@ -57,7 +59,7 @@ public class PlayList
     /**
      * @param created the created to set
      */
-    public void setCreated(String created)
+    public void setCreated(Date created)
     {
         this.created = created;
     }
@@ -65,6 +67,6 @@ public class PlayList
      @Override
     public String toString()
     {
-        return String.format("%-5d %-30s ", playlistId, playlistName);
+        return String.format("%-5d %-30s %-30s ", playlistId, playlistName, created);
     }
 }

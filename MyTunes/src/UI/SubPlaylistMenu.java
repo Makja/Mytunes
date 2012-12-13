@@ -40,6 +40,7 @@ public class SubPlaylistMenu extends Menu
             smgr = new SongManager();
             amgr = new ArtistManager();
             cmgr = new CategoryManager();
+            pmgr = new PlaylistManager();
             
         }
         catch (Exception ex)
@@ -96,8 +97,9 @@ public class SubPlaylistMenu extends Menu
         }
         catch (Exception e)
         {
-//            System.out.println(" ERROR - " + e.getMessage());
-            e.printStackTrace();
+            System.out.println(" ERROR - " + e.getMessage());
+            
+           
         }
         pause();
     }
