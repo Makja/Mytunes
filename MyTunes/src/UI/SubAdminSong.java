@@ -32,7 +32,7 @@ public class SubAdminSong extends Menu
 
     public SubAdminSong()
     {
-        super("Song Menu",
+        super("Song Menutest",
                 "List All",
                 "Search",
                 "Add Song",
@@ -99,6 +99,7 @@ public class SubAdminSong extends Menu
         catch (Exception e)
         {
             System.out.println(" ERROR - " + e.getMessage());
+          
         }
         pause();
     }

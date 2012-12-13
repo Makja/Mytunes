@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -34,7 +35,7 @@ public class PlaylistDBManager extends ConnectionDBManager
        try (Connection con = dataSource.getConnection())
         {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM Playlist");
+            ResultSet rs = st.executeQuery("SELECT PlayList.* FROM Playlist");
 
             ArrayList<PlayList> playlists = new ArrayList<>();
 
@@ -42,7 +43,7 @@ public class PlaylistDBManager extends ConnectionDBManager
             {
                 int playlistId = rs.getInt("ID");
                 String playlistName = rs.getString("Name");
-                String created = rs.getString("Created");
+                Date created = rs.getDate("Created");
                 
                 PlayList p = new PlayList(playlistId, playlistName, created);
                 playlists.add(p);

@@ -97,8 +97,9 @@ public class SubPlaylistMenu extends Menu
         }
         catch (Exception e)
         {
-//            System.out.println(" ERROR - " + e.getMessage());
-            e.printStackTrace();
+            System.out.println(" ERROR - " + e.getMessage());
+            
+           
         }
         pause();
     }
