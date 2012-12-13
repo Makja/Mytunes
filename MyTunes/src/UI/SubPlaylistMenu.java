@@ -4,9 +4,12 @@
  */
 package UI;
 
+import BE.PlayList;
 import BLL.ArtistManager;
 import BLL.CategoryManager;
+import BLL.PlaylistManager;
 import BLL.SongManager;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,6 +22,7 @@ public class SubPlaylistMenu extends Menu
     private SongManager smgr;
     private ArtistManager amgr;
     private CategoryManager cmgr;
+    private PlaylistManager pmgr;
 
     public SubPlaylistMenu()
     {
@@ -78,7 +82,24 @@ public class SubPlaylistMenu extends Menu
 
     private void listAllPlaylists()
     {
-        System.out.println("You are listing all Playlist");
+         try
+        {
+            ArrayList<PlayList> playlists = pmgr.getAllPlaylists();
+
+            clear();
+            printSongHeader2();
+
+            for (PlayList p : playlists)
+            {
+                System.out.println(p);
+            }
+        }
+        catch (Exception e)
+        {
+//            System.out.println(" ERROR - " + e.getMessage());
+            e.printStackTrace();
+        }
+        pause();
     }
 
     private void allSongPlaylist()
