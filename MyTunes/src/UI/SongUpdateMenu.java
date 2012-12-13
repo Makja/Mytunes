@@ -8,6 +8,8 @@ import BE.Artist;
 import BE.Category;
 import BE.Song;
 import BLL.SongManager;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -22,7 +24,8 @@ public class SongUpdateMenu extends Menu
     private Artist a;
     private Category c;
 
-    public SongUpdateMenu(Song song)
+
+    public SongUpdateMenu(Song song) throws SQLException, IOException
     {
         super("Update a song",
                 "Update Title",
@@ -31,7 +34,7 @@ public class SongUpdateMenu extends Menu
                 "Update Category");
         EXIT_OPTION = EXIT_VALUE;
      s = song;
-
+ 
     }
 
     @Override
@@ -100,6 +103,7 @@ public class SongUpdateMenu extends Menu
         }
         catch (Exception e)
         {
+            
             System.out.println("ERROR - " + e.getMessage());
             pause();
         }
