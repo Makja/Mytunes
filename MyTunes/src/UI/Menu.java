@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author bhp
+ * @author Mak, Jonas, Daniel
  */
 public abstract class Menu
 {
@@ -18,12 +18,20 @@ public abstract class Menu
     private final String header;
     private final String[] menuItems;
 
+    /**
+     *Constructor
+     * @param header
+     * @param menuItems
+     */
     public Menu(String header, String... menuItems)
     {
         this.header = header;
         this.menuItems = menuItems;
     }
 
+    /**
+     *Starter menuen
+     */
     public void run()
     {
         boolean done = false;
@@ -38,7 +46,9 @@ public abstract class Menu
             }
         }
     }
-
+    /**
+     * Viser menuen
+     */
     private void showMenu()
     {
         clear();
@@ -54,7 +64,9 @@ public abstract class Menu
         System.out.println(
                 String.format("%2d)  %s", EXIT_OPTION, "Exit"));
     }
-
+    /*
+     * Går videre til menupunktet der indtastes
+     */
     private int getOption()
     {
         while (true)
@@ -79,7 +91,9 @@ public abstract class Menu
             }
         }
     }
-
+    /*
+     * Printer de forskellige sang headere
+     */
     protected void printSongHeader()            //viser ID; Title, Artist... som overskrifter
     {
         System.out.println();
@@ -87,14 +101,19 @@ public abstract class Menu
                 "ID", "Title", "Artist", "Category", "Filename", "Duration"));
         System.out.println();
     }
-    
-    protected void printSongHeader2()
+    /**
+     * Printer de forskellige playlist headere
+     */
+    protected void printPlaylistHeader() 
     {
         System.out.println();
         System.out.println(String.format("%-5s %-30s %-30s","ID","Name","Created"));
         System.out.println();
     }
 
+    /**
+     *Laver 50 tomme linjer
+     */
     protected void clear()
     {
         for (int i = 0; i < 50; i++)
@@ -103,6 +122,9 @@ public abstract class Menu
         }
     }
 
+    /**
+     *Laver en pause
+     */
     protected void pause()
     {
         System.out.println("\nPress ENTER to continue...");

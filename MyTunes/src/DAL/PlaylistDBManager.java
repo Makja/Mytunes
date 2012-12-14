@@ -22,7 +22,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Daniel
+ * @author Daniel, Jonas, Mak
  */
 public class PlaylistDBManager extends ConnectionDBManager
 {
@@ -34,6 +34,11 @@ public class PlaylistDBManager extends ConnectionDBManager
     {
     }
 
+    /**
+     * Retunerer alle playlister
+     * @return playlists
+     * @throws SQLException
+     */
     public ArrayList<PlayList> getAllPlaylists() throws SQLException
     {
         try (Connection con = dataSource.getConnection())
@@ -56,7 +61,13 @@ public class PlaylistDBManager extends ConnectionDBManager
             return playlists;
         }
     }
-     public void removePlaylist(String name) throws SQLException
+    
+     /**
+     * Fjener playlisten med et givet navn
+     * @param name
+     * @throws SQLException
+     */
+    public void removePlaylist(String name) throws SQLException
     {
         String sql = "DELETE FROM PlayList WHERE PlayList.Name = ?";
         
@@ -73,6 +84,12 @@ public class PlaylistDBManager extends ConnectionDBManager
     }
 
 
+    /**
+     * Retunerer alle sange i en given playliste
+     * @param ID
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Song> getSongsInPlaylist(int ID) throws SQLException
     {
         try (Connection con = dataSource.getConnection())
@@ -105,6 +122,12 @@ public class PlaylistDBManager extends ConnectionDBManager
         }
     }
     
+    /**
+     * Tilføjer en playliste med et givet navn
+     * @param p
+     * @return
+     * @throws SQLException
+     */
     public PlayList addPlaylist(PlayList p) throws SQLException
     {
         

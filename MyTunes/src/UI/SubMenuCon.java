@@ -31,7 +31,9 @@ public class SubMenuCon extends Menu {
                 "Whats playing");
         EXIT_OPTION = EXIT_VALUE;
     }
-
+    /**
+     * Giver mulighed for at vælge de forskellige menuer
+     **/
     @Override
     protected void doAction(int option) {
         switch (option) {
@@ -81,19 +83,25 @@ public class SubMenuCon extends Menu {
         System.out.println("You select Play list");
 
     }
-
-    private void stopPlaying() {                                //Stopper afspilningen af sangen, via MyTunesPlayer
+    /**
+     * Stopper afspilningen af sangen, via MyTunesPlayer
+     */
+    private void stopPlaying() {                                
         p.stop();
         System.out.println("You tried to stop the playback");
 
     }
-
+    /**
+     * Pauser afspilningen af sangen
+     */
     private void pausePlayback() {
         p.pause();
         System.out.println("You tried to pause the playback");
 
     }
-
+    /**
+     * genoptager afspilningen af sangen
+     */
     private void resumePlayback() {
         p.resume();
         System.out.println("You tried to resume playing the current song");

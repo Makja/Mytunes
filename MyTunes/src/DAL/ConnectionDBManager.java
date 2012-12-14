@@ -17,6 +17,11 @@ public class ConnectionDBManager
 {
     protected SQLServerDataSource dataSource;
     
+    /**
+     * Opretter forbindelse til databasen ved hjælp af config filen
+     * MyTunes.cfg
+     * @throws IOException
+     */
     public ConnectionDBManager() throws IOException
     {
         dataSource = new SQLServerDataSource();

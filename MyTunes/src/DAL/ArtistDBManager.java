@@ -16,17 +16,26 @@ import java.util.Scanner;
 
 /**
  *
- * @author Daniel
+ * @author Daniel, Jonas, Mak 
  */
 public class ArtistDBManager extends ConnectionDBManager
 {
 
     
+    /**
+     *Constructor
+     * @throws IOException
+     */
     public ArtistDBManager() throws IOException
     {
      
     }
 
+    /**
+     *Henter alle artister fra databasen
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Artist> getAllArtist() throws SQLException
     {
         try (Connection con = dataSource.getConnection())
@@ -49,6 +58,11 @@ public class ArtistDBManager extends ConnectionDBManager
 
     }
 
+    /**
+     *Henter en artist med et specifikt id
+     * @return
+     * @throws SQLException
+     */
     public Artist getArtistId() throws SQLException
     {
         try (Connection con = dataSource.getConnection())
@@ -77,6 +91,12 @@ public class ArtistDBManager extends ConnectionDBManager
 
     }
 
+    /**
+     *Henter en artist med et specifikt navn
+     * @param artistName
+     * @return
+     * @throws SQLException
+     */
     public Artist getArtistName(String artistName) throws SQLException
     {
 
@@ -102,6 +122,12 @@ public class ArtistDBManager extends ConnectionDBManager
 
     }
 
+    /**
+     *Tilføjer en artist 
+     * @param artist
+     * @return
+     * @throws SQLException
+     */
     public Artist addArtist(Artist artist) throws SQLException
     {
         String sql = "INSERT INTO Artist VALUES (?)";

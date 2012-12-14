@@ -26,6 +26,12 @@ public class CategoryDBManager extends ConnectionDBManager
        
     }
     
+    /**
+     * Tilføjer en kategori til databasen
+     * @param category
+     * @return
+     * @throws SQLException
+     */
     public Category addCategory(Category category) throws SQLException
        {
         String sql = "INSERT INTO Category VALUES (?)";
@@ -48,6 +54,12 @@ public class CategoryDBManager extends ConnectionDBManager
 
     }
     
+    /**
+     * Retunerer en kategori med et specifikt navn
+     * @param categoryName
+     * @return
+     * @throws SQLException
+     */
     public Category getCategoryName(String categoryName) throws SQLException
     {
         try (Connection con = dataSource.getConnection())

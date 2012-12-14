@@ -4,18 +4,14 @@
  */
 package UI;
 
-import BE.Artist;
-import BE.Category;
 import BE.PlayList;
 import BE.Song;
 import BLL.ArtistManager;
 import BLL.CategoryManager;
 import BLL.PlaylistManager;
 import BLL.SongManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -32,6 +28,9 @@ public class SubPlaylistMenu extends Menu
     private CategoryManager cmgr;
     private PlaylistManager pmgr;
 
+    /**
+     *Opretter en menu 
+     */
     public SubPlaylistMenu()
     {
         super("Playlist Menu",
@@ -58,6 +57,10 @@ public class SubPlaylistMenu extends Menu
         }
     }
 
+    /**
+     *Giver mulighed for at vælge de forskellige menuer
+     * @param option
+     */
     @Override
     protected void doAction(int option)
     {
@@ -100,7 +103,7 @@ public class SubPlaylistMenu extends Menu
             ArrayList<PlayList> playlists = pmgr.getAllPlaylists();
 
             clear();
-            printSongHeader2();
+            printPlaylistHeader();
 
             for (PlayList p : playlists)
             {
@@ -153,7 +156,9 @@ public class SubPlaylistMenu extends Menu
         }
         pause();
     }
-
+    /**
+     * Adds a playlist
+     */
     private void addPlaylist()
     {
         

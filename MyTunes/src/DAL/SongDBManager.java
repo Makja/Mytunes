@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Daniel
+ * @author Daniel, Jonas, Mak
  */
 public class SongDBManager extends ConnectionDBManager
 {
@@ -27,6 +27,11 @@ public class SongDBManager extends ConnectionDBManager
     {
     }
 
+    /**
+     * Søger alle sange igennem og retunere dem hvis artist eller title passer
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Song> Search() throws SQLException
     {
         try (Connection con = dataSource.getConnection())
@@ -62,6 +67,11 @@ public class SongDBManager extends ConnectionDBManager
 
     }
 
+    /**
+     * Retunerer alle sange i databasen
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Song> ListAll() throws SQLException
     {
         try (Connection con = dataSource.getConnection())
@@ -91,6 +101,12 @@ public class SongDBManager extends ConnectionDBManager
 
     }
 
+    /**
+     * Tilføjer en ny sang
+     * @param s
+     * @return
+     * @throws SQLException
+     */
     public Song AddSong(Song s) throws SQLException
     {
 
@@ -120,6 +136,11 @@ public class SongDBManager extends ConnectionDBManager
         return new Song(id, s);
     }
 
+    /**
+     * Opdaterer en sang med nye values
+     * @param s
+     * @throws SQLException
+     */
     public void update(Song s) throws SQLException
     {
 
@@ -143,6 +164,11 @@ public class SongDBManager extends ConnectionDBManager
         }
     }
 
+    /**
+     * Fjerner en sang fra databasen med et givet navn
+     * @param title
+     * @throws SQLException
+     */
     public void RemoveSong(String title) throws SQLException
     {
         String sql = "DELETE FROM SONG WHERE Title = ?";
@@ -159,6 +185,12 @@ public class SongDBManager extends ConnectionDBManager
         }
     }
 
+    /**
+     * Retunerer en sang med et given ID
+     * @param Id
+     * @return
+     * @throws SQLException
+     */
     public Song getById(int Id) throws SQLException
     {
         try (Connection con = dataSource.getConnection())

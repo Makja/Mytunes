@@ -53,7 +53,10 @@ public class SubAdminSong extends Menu
             System.exit(2);
         }
     }
-
+    /**
+     * Giver mulighed for at vælge de forskellige menuer
+     * @param option 
+     */
     @Override
     protected void doAction(int option)
     {
@@ -108,7 +111,7 @@ public class SubAdminSong extends Menu
     }
 
     /**
-     * Searches a for a specefic song with the given title og artist.
+     * Searches a for a specific song with the given title og artist.
      */
     private void songSearch()
     {
