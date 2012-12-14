@@ -5,6 +5,7 @@
 package BLL;
 
 import BE.PlayList;
+import BE.Song;
 import DAL.PlaylistDBManager;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -26,14 +27,14 @@ public class PlaylistManager
     public ArrayList<PlayList> getAllPlaylists() throws SQLException
     {
         return pdb.getAllPlaylists();
-//    }
-//    public ArrayList<PlayList> getAllSongsInPlaylist()
+    }
+    public ArrayList <Song> getSongsInPlaylist() throws SQLException
+    {
+        return pdb.getSongsInPlaylist();
+    }
+//    public ArrayList<Playlist> AddPlaylist()
 //    {
-//        return pdb.getAllSongsInPlaylist();
-//    }
-//    public ArrayList<PlayList> getTimeCreated()
-//    {
-//        return pdb.getTimeCreated;
+//        return pdb.addPlaylist();
 //    }
     }
-}
+

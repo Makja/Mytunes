@@ -5,11 +5,13 @@
 package UI;
 
 import BE.PlayList;
+import BE.Song;
 import BLL.ArtistManager;
 import BLL.CategoryManager;
 import BLL.PlaylistManager;
 import BLL.SongManager;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -41,7 +43,7 @@ public class SubPlaylistMenu extends Menu
             amgr = new ArtistManager();
             cmgr = new CategoryManager();
             pmgr = new PlaylistManager();
-            
+
         }
         catch (Exception ex)
         {
@@ -59,7 +61,7 @@ public class SubPlaylistMenu extends Menu
                 listAllPlaylists();     //lister alle playlister op menu
                 break;
             case 2:
-                allSongPlaylist();      //viser alle sange på playliste menu
+                allSongsInPlaylist();      //viser alle sange på playliste menu
                 break;
             case 3:
                 addPlaylist();          //tilføj en play liste menu
@@ -83,7 +85,7 @@ public class SubPlaylistMenu extends Menu
 
     private void listAllPlaylists()
     {
-         try
+        try
         {
             ArrayList<PlayList> playlists = pmgr.getAllPlaylists();
 
@@ -98,20 +100,37 @@ public class SubPlaylistMenu extends Menu
         catch (Exception e)
         {
             System.out.println(" ERROR - " + e.getMessage());
-            
-           
+
+
         }
         pause();
     }
 
-    private void allSongPlaylist()
+    private void allSongsInPlaylist()
     {
-        System.out.println("All songs on the Playlist");
+        clear();
+        
+        try
+        {
+            ArrayList<Song> songs = pmgr.getSongsInPlaylist();
+
+            clear();
+            printSongHeader();
+            for (Song s : songs)
+            {
+                System.out.println(s);
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(" ERROR - " + e.getMessage());
+        }
+        pause();
     }
 
     private void addPlaylist()
     {
-        System.out.println("You are adding a playlist");        
+        System.out.println("You are adding a playlist");
     }
 
     private void removePlaylist()
@@ -126,12 +145,12 @@ public class SubPlaylistMenu extends Menu
 
     private void addSongPlaylist()
     {
-        System.out.println("You are adding a song to a playlist");        
+        System.out.println("You are adding a song to a playlist");
     }
-    
+
     private void removeSongPlaylist()
     {
-        System.out.println("You are removing a song to a playlist");        
+        System.out.println("You are removing a song to a playlist");
     }
 
     private void doActionExit()

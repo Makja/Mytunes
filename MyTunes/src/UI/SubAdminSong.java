@@ -32,7 +32,7 @@ public class SubAdminSong extends Menu
 
     public SubAdminSong()
     {
-        super("Song Menutest",
+        super("Song Menu",
                 "List All",
                 "Search",
                 "Add Song",
@@ -210,8 +210,17 @@ public class SubAdminSong extends Menu
                     song = s;
                 }
             }
-
-            new SongUpdateMenu(song).run();
+            if(song != null)
+            {
+                new SongUpdateMenu(song).run();
+            }
+            else
+            {
+                System.out.println("Unknown song Id");
+                pause();
+            }
+            
+            
         }
         catch (Exception e)
         {

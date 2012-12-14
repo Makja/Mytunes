@@ -82,8 +82,11 @@ public class SongDBManager extends ConnectionDBManager
                 String categoryName = rs.getString("Category");
                 String fileName = rs.getString("Filename");
                 int duration = rs.getInt("Duration");
+                int artistId = rs.getInt("ArtistID");
+                int categoryId = rs.getInt("CategoryID");
 
-                Song s = new Song(id, title, new Artist(artistName), new Category(categoryName), fileName, duration);
+                Song s = new Song(id, title, new Artist(artistId,artistName), new Category(categoryId,categoryName), fileName, duration);
+
                 songs.add(s);
             }
             return songs;
@@ -177,8 +180,10 @@ public class SongDBManager extends ConnectionDBManager
                 String categoryName = rs.getString("Category");
                 String fileName = rs.getString("Filename");
                 int duration = rs.getInt("Duration");
+                int artistId = rs.getInt("ArtistID");
+                int categoryId = rs.getInt("CategoryID");
 
-                Song s = new Song(id, title, new Artist(artistName), new Category(categoryName), fileName, duration);
+                Song s = new Song(id, title, new Artist(artistId,artistName), new Category(categoryId,categoryName), fileName, duration);
                 
             }
         }

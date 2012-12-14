@@ -34,6 +34,7 @@ public class SongUpdateMenu extends Menu
                 "Update Category");
         EXIT_OPTION = EXIT_VALUE;
      s = song;
+   
  
     }
 
