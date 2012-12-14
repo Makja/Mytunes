@@ -114,15 +114,16 @@ public class SubPlaylistMenu extends Menu
 
         }
     }
-/**
- * Lists all songs in a specified playlist
- */
+
+    /**
+     * Lists all songs in a specified playlist
+     */
     private void allSongsInPlaylist()
     {
         clear();
 
         listAllPlaylists();
-        
+
         System.out.print("Indtast PlayList Id: ");
         int sc = new Scanner(System.in, "ISO-8859-1").nextInt();
 
@@ -153,9 +154,10 @@ public class SubPlaylistMenu extends Menu
     {
         System.out.println("You are adding a playlist");
     }
-/**
- * Deletes a specified playlist from the database.
- */
+
+    /**
+     * Deletes a specified playlist from the database.
+     */
     private void removePlaylist()
     {
         clear();

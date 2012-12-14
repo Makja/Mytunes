@@ -7,9 +7,10 @@ package UI;
 import BE.Artist;
 import BE.Category;
 import BE.Song;
+import BLL.ArtistManager;
+import BLL.CategoryManager;
 import BLL.SongManager;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -21,11 +22,10 @@ public class SongUpdateMenu extends Menu
 
     private static final int EXIT_VALUE = 0;
     private Song s;
-    private Artist a;
-    private Category c;
+    private ArtistManager amgr;
+    private CategoryManager cmgr;
 
-
-    public SongUpdateMenu(Song song) throws SQLException, IOException
+    public SongUpdateMenu(Song song)
     {
         super("Update a song",
                 "Update Title",
@@ -33,15 +33,24 @@ public class SongUpdateMenu extends Menu
                 "Update Duration",
                 "Update Category");
         EXIT_OPTION = EXIT_VALUE;
-     s = song;
-   
- 
+        s = song;
+        try
+        {
+            amgr = new ArtistManager();
+            cmgr = new CategoryManager();
+        }
+        catch (IOException ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+        }
+
+
     }
 
     @Override
     protected void doAction(int option)
     {
-        
+
         switch (option)
         {
             case 1:
@@ -58,8 +67,8 @@ public class SongUpdateMenu extends Menu
                 break;
             case EXIT_VALUE:
                 doActionExit();
-                
-            
+
+
         }
     }
 
@@ -73,20 +82,21 @@ public class SongUpdateMenu extends Menu
         String title = new Scanner(System.in, "ISO-8859-1").nextLine();
         s.setTitle(title);
     }
-/*
- * Updates the artist to the given name.
- */
+    /*
+     * Updates the artist to the given name.
+     */
+
     private void updateArtist()
     {
         System.out.println();
         System.out.print("New Artist: ");
         String name = new Scanner(System.in, "ISO-8859-1").nextLine();
-        a.setArtistName(name);
+        s.getArtist().setArtistName(name);
     }
-    
-/*
- * Updates the duration to the given lenght
- */
+
+    /*
+     * Updates the duration to the given lenght
+     */
     private void updateDuration()
     {
         System.out.println();
@@ -103,7 +113,7 @@ public class SongUpdateMenu extends Menu
         System.out.println();
         System.out.print("New Category: ");
         String category = new Scanner(System.in, "ISO-8859-1").nextLine();
-        c.setCategoryName(category);
+        s.getCategory().setCategoryName(category);
     }
 
     /*
@@ -114,12 +124,27 @@ public class SongUpdateMenu extends Menu
     {
         try
         {
+            Artist a = amgr.getArtistByName(s.getArtist().getArtistName());
+            if (a == null)
+            {
+                a = amgr.addArtist(new Artist(-1, s.getArtist().getArtistName()));
+            }
+            s.setArtist(a);
+            
+            Category c = cmgr.getCategoryByName(s.getCategory().getCategoryName());
+            if (c == null)
+            {
+                c = cmgr.addCategory(new Category(-1, s.getCategory().getCategoryName()));
+            }
+            s.setCategory(c);
+            
             SongManager smgr = new SongManager();
             smgr.updateSong(s);
+            
         }
         catch (Exception e)
         {
-            
+
             System.out.println("ERROR - " + e.getMessage());
             pause();
         }
