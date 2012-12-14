@@ -13,32 +13,58 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Daniel
+ * @author Daniel, Jonas, Mak
  */
 public class PlaylistManager
 {
     private PlaylistDBManager pdb = null;
     
+    /**
+     *Constructor 
+     * @throws IOException
+     */
     public PlaylistManager() throws IOException
     {
         pdb = new PlaylistDBManager();
     }
     
+    /**
+     *Henter alle playlists
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<PlayList> getAllPlaylists() throws SQLException
     {
         return pdb.getAllPlaylists();
     }
+    /**
+     *Henter alle sange i en given playlist
+     * @param ID
+     * @return
+     * @throws SQLException
+     */
     public ArrayList <Song> getSongsInPlaylist(int ID) throws SQLException
     {
         return pdb.getSongsInPlaylist(ID);
     }
     
+    /**
+     *Tilføjer en playlist
+     * @param p
+     * @return
+     * @throws SQLException
+     */
     public PlayList AddPlaylist(PlayList p) throws SQLException
     {
         return pdb.addPlaylist(p);
     }
     
     
+    /**
+     *Sletter en playlist
+     * @param name
+     * @throws SQLException
+     */
     public void removePlaylist(String name) throws SQLException
     {
         pdb.removePlaylist(name);

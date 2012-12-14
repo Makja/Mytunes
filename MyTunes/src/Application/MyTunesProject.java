@@ -11,18 +11,15 @@ import UI.MainMenu;
  * @author Mak, Daniel & Jonas
  */
 
-/**
-     * Starter vores MyTunes program      
-     */
 public class MyTunesProject
 {
 
     /**
-     * @param args the command line arguments
+     * Starter vores MyTunes program
      */
     public static void main(String[] args)
     {
-        new MainMenu().run();
+        new MainMenu().run(); 
         
         
     }

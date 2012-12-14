@@ -10,9 +10,14 @@ package BE;
  */
 public class Artist
 {
-    private final int artistId;
+    private final int artistId; 
     private String artistName;
     
+    /**
+     *Første constructor
+     * @param artistId
+     * @param artistName
+     */
     public Artist(int artistId, String artistName)
     {
         this.artistId = artistId;
@@ -20,11 +25,20 @@ public class Artist
         
     }
 
+    /**
+     *Anden constructor
+     * @param artistName
+     */
     public Artist(String artistName)
     {
         this(-1, artistName);
     }
     
+    /**
+     *Tredje constructor
+     * @param artistId
+     * @param artist
+     */
     public Artist(int artistId, Artist artist)
     {
         this(artistId, artist.getArtistName());
@@ -34,12 +48,16 @@ public class Artist
 //        this(artistId, artist.getArtistName());
 //    }
     
+    /**
+     *returnerer artist navnet
+     * @return artistName
+     */
     public String getArtistName()
     {
         return artistName;
     }
 
-    /**
+    /**returnerer artist id
      * @return the artistId
      */
     public int getArtistId()
@@ -47,7 +65,7 @@ public class Artist
         return artistId;
     }
 
-    /**
+    /**Sætter artist navnet
      * @param artistName the artistName to set
      */
     public void setArtistName(String artistName)

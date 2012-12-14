@@ -14,6 +14,11 @@ public class Category
     private final int categoryId;
     private String categoryName;
 
+    /**
+     *Første constructor
+     * @param categoryId
+     * @param categoryName
+     */
     public Category(int categoryId, String categoryName)
     {
         this.categoryId = categoryId;
@@ -21,17 +26,18 @@ public class Category
 
     }
 
+    /**
+     *Anden constructor
+     * @param categoryName
+     */
     public Category(String categoryName)
     {
         this(-1, categoryName);
     }
 
-//    public Category(int categoryId)
-//    {
-//        this(categoryId, null);
-//    }
 
     /**
+     * returnerer category id
      * @return the categoryId
      */
     public int getCategoryId()
@@ -40,6 +46,7 @@ public class Category
     }
 
     /**
+     * returnerer category navn
      * @return the categoryName
      */
     public String getCategoryName()
@@ -48,6 +55,7 @@ public class Category
     }
 
     /**
+     * sætter category navn
      * @param categoryName the categoryName to set
      */
     public void setCategoryName(String categoryName)

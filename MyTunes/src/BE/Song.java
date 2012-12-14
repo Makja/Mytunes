@@ -19,7 +19,7 @@ public class Song
     private int duration;
 
     /**
-     *
+     *Første constructor
      * @param id
      * @param title
      * @param artist
@@ -32,6 +32,15 @@ public class Song
         this(-1, title, artist, category, fileName, duration);
     }
     
+    /**
+     * Anden constructor
+     * @param id
+     * @param title
+     * @param artist
+     * @param category
+     * @param fileName
+     * @param duration
+     */
     public Song(int id, String title, Artist artist, Category category, String fileName, int duration)
     {
         this.id = id;
@@ -42,6 +51,11 @@ public class Song
         this.duration = duration;
     }
    
+    /**
+     *Tredje constructor
+     * @param id
+     * @param s
+     */
     public Song(int id, Song s)
     {
         this(id, s.getTitle(), s.getArtist(), s.getCategory(), s.getFileName(), s.getDuration());
@@ -49,13 +63,10 @@ public class Song
     
     
 
+
     /**
-     *
-     * @param id
-     * @param title
-     */
-    /**
-     * @return the id
+     *Returnerer sang id
+     * @return
      */
     public int getId()
     {

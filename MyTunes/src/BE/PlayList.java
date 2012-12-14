@@ -18,6 +18,12 @@ public class PlayList
     private String playlistName;
     private Calendar created;
 
+    /**
+     *Første constructor
+     * @param playlistId
+     * @param playlistName
+     * @param created
+     */
     public PlayList(int playlistId, String playlistName, Calendar created)
     {
         this.playlistId = playlistId;
@@ -25,17 +31,28 @@ public class PlayList
         this.created = created;
     }
     
+    /**
+     *Anden Constructor
+     * @param playlistId
+     * @param p
+     */
     public PlayList(int playlistId, PlayList p)
     {
         this(playlistId, p.getName(), p.getCreated());
     }
     
+    /**
+     *Tredje constructor
+     * @param playlistName
+     * @param created
+     */
     public PlayList(String playlistName, Calendar created)
     {
         this(-1, playlistName, created);
     }
 
     /**
+     * returnerer playlist id
      * @return the id
      */
     public int getId()
@@ -44,6 +61,7 @@ public class PlayList
     }
 
     /**
+     * returnerer playlist navn
      * @return the name
      */
     public String getName()
@@ -52,6 +70,7 @@ public class PlayList
     }
 
     /**
+     * Sætter playlist navn
      * @param name the name to set
      */
     public void setName(String name)
@@ -60,6 +79,7 @@ public class PlayList
     }
 
     /**
+     * returnerer playlist calender
      * @return the created
      */
     public Calendar getCreated()
@@ -68,6 +88,7 @@ public class PlayList
     }
 
     /**
+     * Sætter playlist calender
      * @param created the created to set
      */
     public void setCreated(Calendar created)
