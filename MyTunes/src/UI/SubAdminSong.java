@@ -19,9 +19,9 @@ import java.util.Scanner;
  * @author Mak, Jonas og Daniel
  */
 /**
-     * Constructor, opretter en submenu med titlen "Song Menu" og 
-     * 6 menuer, til at liste, søge, tilføje/slette sange.
-     */
+ * Constructor, opretter en submenu med titlen "Song Menu" og 6 menuer, til at
+ * liste, søge, tilføje/slette sange.
+ */
 public class SubAdminSong extends Menu
 {
 
@@ -45,7 +45,7 @@ public class SubAdminSong extends Menu
             smgr = new SongManager();
             amgr = new ArtistManager();
             cmgr = new CategoryManager();
-            
+
         }
         catch (Exception ex)
         {
@@ -82,11 +82,14 @@ public class SubAdminSong extends Menu
         }
     }
 
-    private void listAllSongs()         //lister alle sange op
+    /**
+     * Lists all the songs currently on the database.
+     */
+    private void listAllSongs()
     {
         try
         {
-            ArrayList<Song> songs = smgr.ListAll();     
+            ArrayList<Song> songs = smgr.ListAll();
 
             clear();
             printSongHeader();
@@ -99,12 +102,15 @@ public class SubAdminSong extends Menu
         catch (Exception e)
         {
             System.out.println(" ERROR - " + e.getMessage());
-          
+
         }
         pause();
     }
 
-    private void songSearch()       //søger en bestemt sang
+    /**
+     * Searches a for a specefic song with the given title og artist.
+     */
+    private void songSearch()
     {
         clear();
         try
@@ -125,10 +131,14 @@ public class SubAdminSong extends Menu
         pause();
     }
 
+    /**
+     * Adds a new song to the database with the given values. Title Artist
+     * Category Filename Duration
+     */
     private void addSong()          //tilføjer en sang
     {
-        
-        
+
+
         clear();
         System.out.println("Add Song:");
         System.out.println();
@@ -153,10 +163,10 @@ public class SubAdminSong extends Menu
             int duration = sc.nextInt();
 
             Artist a = amgr.getArtistByName(artistName);
-            
+
             if (a == null)
             {
-                a = amgr.addArtist(new Artist(-1, artistName)); 
+                a = amgr.addArtist(new Artist(-1, artistName));
             }
 
             Category c = cmgr.getCategoryByName(categoryName);
@@ -178,19 +188,22 @@ public class SubAdminSong extends Menu
         catch (Exception ex)
         {
             System.out.println("ERROR - " + ex.getMessage());
-         
+
         }
         pause();
     }
 
+    /**
+     * Updates the values of a specific song with the given values
+     */
     private void updateSong()
     {
-      clear();
+        clear();
         System.out.println("Update Song:");
         System.out.println("");
         try
         {
-            
+
             ArrayList<Song> songs = smgr.ListAll();
 
 
@@ -205,12 +218,12 @@ public class SubAdminSong extends Menu
             Song song = null;
             for (Song s : songs)
             {
-                if(s.getId() == id)
+                if (s.getId() == id)
                 {
                     song = s;
                 }
             }
-            if(song != null)
+            if (song != null)
             {
                 new SongUpdateMenu(song).run();
             }
@@ -219,26 +232,29 @@ public class SubAdminSong extends Menu
                 System.out.println("Unknown song Id");
                 pause();
             }
-            
-            
+
+
         }
         catch (Exception e)
         {
 //            System.out.println(" ERROR - " + e.getMessage());
             e.printStackTrace();
-          
+
         }
-        
+
     }
 
+    /**
+     * Deletes all the songs with the given Title
+     */
     private void removeSong()
     {
-         clear();
+        clear();
         System.out.println("Remove song:");
         System.out.println("");
         try
         {
-            
+
             ArrayList<Song> songs = smgr.ListAll();
 
 
@@ -260,6 +276,9 @@ public class SubAdminSong extends Menu
         }
     }
 
+    /**
+     * Not implemented yet.
+     */
     private void checkSongs()
     {
         System.out.println("You are checking whether all the songs in the database exists");

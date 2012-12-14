@@ -86,6 +86,9 @@ public class SubPlaylistMenu extends Menu
         }
     }
 
+    /**
+     * Lists all playlists
+     */
     private void listAllPlaylists()
     {
         try
@@ -100,6 +103,10 @@ public class SubPlaylistMenu extends Menu
                 System.out.println(p);
             }
         }
+        catch (InputMismatchException e)
+        {
+            System.out.println("ERROR - Playlist ID must be number");
+        }
         catch (Exception e)
         {
             System.out.println(" ERROR - " + e.getMessage());
@@ -107,7 +114,9 @@ public class SubPlaylistMenu extends Menu
 
         }
     }
-
+/**
+ * Lists all songs in a specified playlist
+ */
     private void allSongsInPlaylist()
     {
         clear();
@@ -129,6 +138,10 @@ public class SubPlaylistMenu extends Menu
                 System.out.println(s);
             }
         }
+        catch (InputMismatchException e)
+        {
+            System.out.println("ERROR - Playlist ID must be number");
+        }
         catch (Exception e)
         {
             System.out.println(" ERROR - " + e.getMessage());
@@ -140,7 +153,9 @@ public class SubPlaylistMenu extends Menu
     {
         System.out.println("You are adding a playlist");
     }
-
+/**
+ * Deletes a specified playlist from the database.
+ */
     private void removePlaylist()
     {
         clear();

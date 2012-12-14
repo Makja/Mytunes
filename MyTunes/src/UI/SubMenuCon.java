@@ -66,6 +66,10 @@ public class SubMenuCon extends Menu {
         }
     }
 
+    /**
+     * afspiller sangen fra Mytunesplayer
+     * @throws Exception 
+     */
     private void playASong() throws Exception {
         p = new MyTunesPlayer("01-bryan_adams_-_tonight_we_have_the_stars.mp3");    //afspiller sangen fra Mytunesplayer
         p.play();                                                                   
