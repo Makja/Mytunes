@@ -37,4 +37,9 @@ public class PlaylistManager
 //        return pdb.addPlaylist();
 //    }
     }
-
+    
+    public void removePlaylist(int ID) throws SQLException
+    {
+        pdb.removePlaylist(ID);
+    }
+}

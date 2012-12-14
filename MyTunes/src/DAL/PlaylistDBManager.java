@@ -57,7 +57,7 @@ public class PlaylistDBManager extends ConnectionDBManager
     }
      public void removePlaylist(int ID) throws SQLException
     {
-        String sql = "DELETE PlayList.* FROM Playlist WHERE PlayListID = ?";
+        String sql = "DELETE FROM Playlist WHERE PlayListID = ?";
         
         Connection con = dataSource.getConnection();
         

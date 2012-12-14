@@ -11,6 +11,7 @@ import BLL.CategoryManager;
 import BLL.PlaylistManager;
 import BLL.SongManager;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -135,7 +136,25 @@ public class SubPlaylistMenu extends Menu
 
     private void removePlaylist()
     {
-        System.out.println("You are removing a playlist");
+        clear();
+        System.out.println("Delete Playlist:");        
+        try
+        {
+            System.out.print("Select playlist id: ");
+            int ID = new Scanner(System.in).nextInt();
+
+            pmgr.removePlaylist(ID);
+        }
+        catch (InputMismatchException e)
+        {
+            System.out.println("ERROR - Playlist id must be a number.");
+        }
+        catch (Exception e)
+        {
+            System.out.println(" ERROR - " + e.getMessage());
+            pause();
+        }
+    
     }
 
     private void ReorderPlaylist()
