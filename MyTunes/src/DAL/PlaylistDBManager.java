@@ -55,14 +55,14 @@ public class PlaylistDBManager extends ConnectionDBManager
             return playlists;
         }
     }
-     public void removePlaylist(int ID) throws SQLException
+     public void removePlaylist(String name) throws SQLException
     {
-        String sql = "DELETE FROM Playlist WHERE PlayListID = ?";
+        String sql = "DELETE FROM PlayList WHERE PlayList.Name = ?";
         
         Connection con = dataSource.getConnection();
         
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setInt(1, ID);
+        ps.setString(1, name);
         
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)

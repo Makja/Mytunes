@@ -32,14 +32,15 @@ public class PlaylistManager
     {
         return pdb.getSongsInPlaylist(ID);
     }
+    
 //    public ArrayList<Playlist> AddPlaylist()
 //    {
 //        return pdb.addPlaylist();
 //    }
     
     
-    public void removePlaylist(int ID) throws SQLException
+    public void removePlaylist(String name) throws SQLException
     {
-        pdb.removePlaylist(ID);
+        pdb.removePlaylist(name);
     }
 }
