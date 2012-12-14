@@ -28,9 +28,9 @@ public class PlaylistManager
     {
         return pdb.getAllPlaylists();
     }
-    public ArrayList <Song> getSongsInPlaylist() throws SQLException
+    public ArrayList <Song> getSongsInPlaylist(int ID) throws SQLException
     {
-        return pdb.getSongsInPlaylist();
+        return pdb.getSongsInPlaylist(ID);
     }
 //    public ArrayList<Playlist> AddPlaylist()
 //    {

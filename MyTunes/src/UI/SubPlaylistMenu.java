@@ -10,6 +10,7 @@ import BLL.ArtistManager;
 import BLL.CategoryManager;
 import BLL.PlaylistManager;
 import BLL.SongManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -60,6 +61,7 @@ public class SubPlaylistMenu extends Menu
         {
             case 1:
                 listAllPlaylists();     //lister alle playlister op menu
+                pause();
                 break;
             case 2:
                 allSongsInPlaylist();      //viser alle sange på playliste menu
@@ -104,16 +106,21 @@ public class SubPlaylistMenu extends Menu
 
 
         }
-        pause();
     }
 
     private void allSongsInPlaylist()
     {
         clear();
+
+        listAllPlaylists();
         
+        System.out.print("Indtast PlayList Id: ");
+        int sc = new Scanner(System.in, "ISO-8859-1").nextInt();
+
+
         try
         {
-            ArrayList<Song> songs = pmgr.getSongsInPlaylist();
+            ArrayList<Song> songs = pmgr.getSongsInPlaylist(sc);
 
             clear();
             printSongHeader();
@@ -137,7 +144,7 @@ public class SubPlaylistMenu extends Menu
     private void removePlaylist()
     {
         clear();
-        System.out.println("Delete Playlist:");        
+        System.out.println("Delete Playlist:");
         try
         {
             System.out.print("Select playlist id: ");
@@ -154,7 +161,7 @@ public class SubPlaylistMenu extends Menu
             System.out.println(" ERROR - " + e.getMessage());
             pause();
         }
-    
+
     }
 
     private void ReorderPlaylist()
