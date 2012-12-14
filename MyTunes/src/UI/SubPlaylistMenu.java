@@ -140,10 +140,10 @@ public class SubPlaylistMenu extends Menu
         System.out.println("Delete Playlist:");        
         try
         {
-            System.out.print("Select playlist id: ");
-            int ID = new Scanner(System.in).nextInt();
+            System.out.print("Select playlist Name: ");
+            String name = new Scanner(System.in).nextLine();
 
-            pmgr.removePlaylist(ID);
+            pmgr.removePlaylist(name);
         }
         catch (InputMismatchException e)
         {
