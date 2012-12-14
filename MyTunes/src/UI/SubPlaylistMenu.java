@@ -4,6 +4,8 @@
  */
 package UI;
 
+import BE.Artist;
+import BE.Category;
 import BE.PlayList;
 import BE.Song;
 import BLL.ArtistManager;
@@ -11,6 +13,8 @@ import BLL.CategoryManager;
 import BLL.PlaylistManager;
 import BLL.SongManager;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -131,7 +135,36 @@ public class SubPlaylistMenu extends Menu
 
     private void addPlaylist()
     {
-        System.out.println("You are adding a playlist");
+        
+        clear();
+        System.out.println("Add PlayList:");
+        System.out.println();
+
+        try
+        {
+            Scanner sc = new Scanner(System.in, "ISO-8859-1");
+
+            System.out.print("Name: ");
+            String playlistName = sc.nextLine();
+            Calendar created = Calendar.getInstance();
+
+           
+            PlayList playlists = new PlayList(-1,playlistName, created);
+            playlists = pmgr.AddPlaylist(playlists);
+
+            System.out.println();
+            System.out.println("PlayList added with ID : " + playlists);
+        }
+        catch (InputMismatchException e)
+        {
+            System.out.println("ERROR - Duration must be number");
+        }
+        catch (Exception ex)
+        {
+            System.out.println("ERROR - " + ex.getMessage());
+         
+        }
+        pause();
     }
 
     private void removePlaylist()

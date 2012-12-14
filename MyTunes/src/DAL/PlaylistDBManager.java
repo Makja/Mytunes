@@ -17,7 +17,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 /**
@@ -47,7 +49,8 @@ public class PlaylistDBManager extends ConnectionDBManager
             {
                 int playlistId = rs.getInt("ID");
                 String playlistName = rs.getString("Name");
-                Date created = rs.getDate("Created");
+                Calendar created = new GregorianCalendar();
+                created.setTime(rs.getDate("Created"));
 
                 PlayList p = new PlayList(playlistId, playlistName, created);
                 playlists.add(p);
@@ -107,30 +110,27 @@ public class PlaylistDBManager extends ConnectionDBManager
         }
     }
     
-//    public PlayList addPlaylist(PlayList p) throws SQLException
-//    {
-//        
-//        Connection con = dataSource.getConnection();
-//
-//        String sql = "INSERT INTO PlayList(ID, Name, Created)" + ""
-//                + "VALUES(?,?,?)";
-//        PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-//        ps.setInt(1, p.getId());
-//        ps.setString(2, p.getName());
-////        ps.setDate(3, p.getCreated(created));
-//        
-//
-//
-//        int affectedRows = ps.executeUpdate();
-//        if (affectedRows == 0)
-//        {
-//            throw new SQLException("Unable to add Song");
-//        }
-//
-//        ResultSet keys = ps.getGeneratedKeys();
-//        keys.next();
-//        int id = keys.getInt(1);
-//
-//        return new Song(id, s);
-//    }
+    public PlayList addPlaylist(PlayList p) throws SQLException
+    {
+        
+        Connection con = dataSource.getConnection();
+
+        String sql = "INSERT INTO PlayList(Name, Created)" + ""
+                + "VALUES(?,getDate())";
+        PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+        
+        ps.setString(1, p.getName());
+
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to add Playlist");
+        }
+
+        ResultSet keys = ps.getGeneratedKeys();
+        keys.next();
+        int playlistId = keys.getInt(1);
+
+        return new PlayList(playlistId, p);
+    }
 }

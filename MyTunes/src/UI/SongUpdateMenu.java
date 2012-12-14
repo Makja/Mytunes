@@ -76,7 +76,7 @@ public class SongUpdateMenu extends Menu
         System.out.println();
         System.out.print("New Artist: ");
         String name = new Scanner(System.in, "ISO-8859-1").nextLine();
-        a.setArtistName(name);
+        s.getArtist().setArtistName(name);
     }
 
     private void updateDuration()
