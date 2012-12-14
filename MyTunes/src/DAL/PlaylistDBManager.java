@@ -51,5 +51,20 @@ public class PlaylistDBManager extends ConnectionDBManager
             return playlists;
         }
     }
+     public void removePlaylist(int ID) throws SQLException
+    {
+        String sql = "DELETE PlayList.* FROM Playlist WHERE PlayListID = ?";
+        
+        Connection con = dataSource.getConnection();
+        
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, ID);
+        
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to delete Playlist");
+        }                
+    }
 }
 
