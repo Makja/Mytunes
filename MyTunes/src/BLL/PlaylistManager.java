@@ -36,4 +36,9 @@ public class PlaylistManager
 //        return pdb.getTimeCreated;
 //    }
     }
+    
+    public void removePlaylist(int ID) throws SQLException
+    {
+        pdb.removePlaylist(ID);
+    }
 }
