@@ -8,8 +8,6 @@ import BE.Artist;
 import BE.Category;
 import BE.PlayList;
 import BE.Song;
-import BLL.PlaylistManager;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -75,18 +73,15 @@ public class PlaylistDBManager extends ConnectionDBManager
     }
 
 
-    public ArrayList<Song> getSongsInPlaylist() throws SQLException
+    public ArrayList<Song> getSongsInPlaylist(int ID) throws SQLException
     {
         try (Connection con = dataSource.getConnection())
         { 
-            Scanner sc = new Scanner(System.in, "ISO-8859-1");
-            System.out.print("Indtast PlayList Id: ");
-            int sint = sc.nextInt();
             String sql = "SELECT Song.*, Artist.Name, Category.Category FROM Song, PlayListSong, PlayList, Artist, Category "
                     + "WHERE PlayList.ID = PlayListSong.PlayListID AND PlayListSong.SongID = Song.ID AND "
                     + "Song.ArtistID = Artist.ID AND Song.CategoryID = Category.ID AND PlayList.ID = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, sint);
+            ps.setInt(1, ID);
 
 
             ResultSet rs = ps.executeQuery();

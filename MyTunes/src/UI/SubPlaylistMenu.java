@@ -12,6 +12,7 @@ import BLL.ArtistManager;
 import BLL.CategoryManager;
 import BLL.PlaylistManager;
 import BLL.SongManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -64,6 +65,7 @@ public class SubPlaylistMenu extends Menu
         {
             case 1:
                 listAllPlaylists();     //lister alle playlister op menu
+                pause();
                 break;
             case 2:
                 allSongsInPlaylist();      //viser alle sange på playliste menu
@@ -88,6 +90,9 @@ public class SubPlaylistMenu extends Menu
         }
     }
 
+    /**
+     * Lists all playlists
+     */
     private void listAllPlaylists()
     {
         try
@@ -102,22 +107,33 @@ public class SubPlaylistMenu extends Menu
                 System.out.println(p);
             }
         }
+        catch (InputMismatchException e)
+        {
+            System.out.println("ERROR - Playlist ID must be number");
+        }
         catch (Exception e)
         {
             System.out.println(" ERROR - " + e.getMessage());
 
 
         }
-        pause();
     }
-
+/**
+ * Lists all songs in a specified playlist
+ */
     private void allSongsInPlaylist()
     {
         clear();
+
+        listAllPlaylists();
         
+        System.out.print("Indtast PlayList Id: ");
+        int sc = new Scanner(System.in, "ISO-8859-1").nextInt();
+
+
         try
         {
-            ArrayList<Song> songs = pmgr.getSongsInPlaylist();
+            ArrayList<Song> songs = pmgr.getSongsInPlaylist(sc);
 
             clear();
             printSongHeader();
@@ -125,6 +141,10 @@ public class SubPlaylistMenu extends Menu
             {
                 System.out.println(s);
             }
+        }
+        catch (InputMismatchException e)
+        {
+            System.out.println("ERROR - Playlist ID must be number");
         }
         catch (Exception e)
         {
@@ -166,11 +186,13 @@ public class SubPlaylistMenu extends Menu
         }
         pause();
     }
-
+/**
+ * Deletes a specified playlist from the database.
+ */
     private void removePlaylist()
     {
         clear();
-        System.out.println("Delete Playlist:");        
+        System.out.println("Delete Playlist:");
         try
         {
             System.out.print("Select playlist Name: ");
@@ -187,7 +209,7 @@ public class SubPlaylistMenu extends Menu
             System.out.println(" ERROR - " + e.getMessage());
             pause();
         }
-    
+
     }
 
     private void ReorderPlaylist()

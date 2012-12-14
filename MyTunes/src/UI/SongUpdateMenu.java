@@ -63,6 +63,9 @@ public class SongUpdateMenu extends Menu
         }
     }
 
+    /*
+     * Updates the title to the given name.
+     */
     private void updateTitle()
     {
         System.out.println();
@@ -70,7 +73,9 @@ public class SongUpdateMenu extends Menu
         String title = new Scanner(System.in, "ISO-8859-1").nextLine();
         s.setTitle(title);
     }
-
+/*
+ * Updates the artist to the given name.
+ */
     private void updateArtist()
     {
         System.out.println();
@@ -78,7 +83,10 @@ public class SongUpdateMenu extends Menu
         String name = new Scanner(System.in, "ISO-8859-1").nextLine();
         s.getArtist().setArtistName(name);
     }
-
+    
+/*
+ * Updates the duration to the given lenght
+ */
     private void updateDuration()
     {
         System.out.println();
@@ -87,6 +95,9 @@ public class SongUpdateMenu extends Menu
         s.setDuration(duration);
     }
 
+    /*
+     * Updates the category of a song
+     */
     private void updateCategory()
     {
         System.out.println();
@@ -95,6 +106,10 @@ public class SongUpdateMenu extends Menu
         c.setCategoryName(category);
     }
 
+    /*
+     * Saves the changes to the database.
+     * (Called on exit)
+     */
     private void saveChanges()
     {
         try
@@ -110,6 +125,9 @@ public class SongUpdateMenu extends Menu
         }
     }
 
+    /*
+     * Exits and saves the changes you've made.
+     */
     private void doActionExit()
     {
         saveChanges();
