@@ -70,7 +70,7 @@ public class PlaylistDBManager extends ConnectionDBManager
             throw new SQLException("Unable to delete Playlist");
         }                
     }
-}
+
 
     public ArrayList<Song> getSongsInPlaylist() throws SQLException
     {
