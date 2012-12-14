@@ -4,6 +4,7 @@
  */
 package BE;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -15,13 +16,23 @@ public class PlayList
 
     private final int playlistId;
     private String playlistName;
-    private Date created;
+    private Calendar created;
 
-    public PlayList(int playlistId, String playlistName, Date created)
+    public PlayList(int playlistId, String playlistName, Calendar created)
     {
         this.playlistId = playlistId;
         this.playlistName = playlistName;
         this.created = created;
+    }
+    
+    public PlayList(int playlistId, PlayList p)
+    {
+        this(playlistId, p.getName(), p.getCreated());
+    }
+    
+    public PlayList(String playlistName, Calendar created)
+    {
+        this(-1, playlistName, created);
     }
 
     /**
@@ -51,7 +62,7 @@ public class PlayList
     /**
      * @return the created
      */
-    public Date getCreated()
+    public Calendar getCreated()
     {
         return created;
     }
@@ -59,7 +70,7 @@ public class PlayList
     /**
      * @param created the created to set
      */
-    public void setCreated(Date created)
+    public void setCreated(Calendar created)
     {
         this.created = created;
     }
@@ -67,6 +78,6 @@ public class PlayList
      @Override
     public String toString()
     {
-        return String.format("%-5d %-30s %-30s ", playlistId, playlistName, created);
+        return String.format("%-5d %-30s %-30s ", playlistId, playlistName, created.getTime());
     }
 }
